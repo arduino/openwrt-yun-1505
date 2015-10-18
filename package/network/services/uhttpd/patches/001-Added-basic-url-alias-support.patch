@@ -1,7 +1,91 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ec45c52..871dd5e 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+Index: uhttpd/file.c
+===================================================================
+--- uhttpd.orig/file.c
++++ uhttpd/file.c
+@@ -675,9 +675,11 @@ dispatch_find(const char *url, struct pa
+ }
+ 
+ static void
+-uh_invoke_script(struct client *cl, struct dispatch_handler *d, struct path_info *pi)
++uh_invoke_script(struct client *cl, struct dispatch_handler *d, char *url, struct path_info *pi)
+ {
+-	char *url = blobmsg_data(blob_data(cl->hdr.head));
++	if (url == NULL) {
++		url = blobmsg_data(blob_data(cl->hdr.head));
++	}
+ 
+ 	n_requests++;
+ 	d->handle_request(cl, url, pi);
+@@ -699,7 +701,7 @@ static void uh_complete_request(struct c
+ 		cl = dr->cl;
+ 		dr->called = true;
+ 		cl->dispatch.data_blocked = false;
+-		uh_invoke_script(cl, dr->d, dr->path ? &dr->pi : NULL);
++		uh_invoke_script(cl, dr->d, NULL, dr->path ? &dr->pi : NULL);
+ 		client_poll_post_data(cl);
+ 	}
+ }
+@@ -775,7 +777,7 @@ uh_invoke_handler(struct client *cl, str
+ 		return uh_defer_script(cl, d, pi);
+ 
+ 	cl->dispatch.req_free = uh_complete_request;
+-	uh_invoke_script(cl, d, pi);
++	uh_invoke_script(cl, d, url, pi);
+ }
+ 
+ static bool __handle_file_request(struct client *cl, char *url)
+@@ -819,9 +821,13 @@ void uh_handle_request(struct client *cl
+ {
+ 	struct http_request *req = &cl->request;
+ 	struct dispatch_handler *d;
+-	char *url = blobmsg_data(blob_data(cl->hdr.head));
++	char url[1024];
++	char *orig_url = blobmsg_data(blob_data(cl->hdr.head));
+ 	char *error_handler;
+ 
++	/*Aliasing*/
++	uh_alias_transform(orig_url, url, 1024);
++
+ 	req->redirect_status = 200;
+ 	d = dispatch_find(url, NULL);
+ 	if (d)
+Index: uhttpd/main.c
+===================================================================
+--- uhttpd.orig/main.c
++++ uhttpd/main.c
+@@ -72,6 +72,14 @@ static void uh_config_parse(void)
+ 				continue;
+ 
+ 			uh_auth_add(line, col1, col2);
++		} else if (!strncmp(line, "A:", 2)) {
++			if(!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
++				!(col2 = strchr(col1, ':')) || (*col2++ = 0) ||
++				!(eol = strchr(col2, '\n')) || (*eol++  = 0))
++				continue;
++
++			uh_alias_add(strdup(col1),strdup(col2));
++
+ 		} else if (!strncmp(line, "I:", 2)) {
+ 			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
+ 				!(eol = strchr(col1, '\n')) || (*eol++  = 0))
+Index: uhttpd/uhttpd.h
+===================================================================
+--- uhttpd.orig/uhttpd.h
++++ uhttpd/uhttpd.h
+@@ -289,6 +289,9 @@ void client_poll_post_data(struct client
+ void uh_client_read_cb(struct client *cl);
+ void uh_client_notify_state(struct client *cl);
+ 
++void uh_alias_add(const char *from, const char *to);
++bool uh_alias_transform(const char *url, char *dest, int test_l);
++
+ void uh_auth_add(const char *path, const char *user, const char *pass);
+ bool uh_auth_check(struct client *cl, struct path_info *pi);
+ 
+Index: uhttpd/CMakeLists.txt
+===================================================================
+--- uhttpd.orig/CMakeLists.txt
++++ uhttpd/CMakeLists.txt
 @@ -21,7 +21,7 @@ IF(LIBS STREQUAL "LIBS-NOTFOUND")
  	SET(LIBS "")
  ENDIF()
@@ -11,12 +95,11 @@ index ec45c52..871dd5e 100644
  IF(TLS_SUPPORT)
  	SET(SOURCES ${SOURCES} tls.c)
  	ADD_DEFINITIONS(-DHAVE_TLS)
-diff --git a/alias.c b/alias.c
-new file mode 100644
-index 0000000..029597a
+Index: uhttpd/alias.c
+===================================================================
 --- /dev/null
-+++ b/alias.c
-@@ -0,0 +1,41 @@
++++ uhttpd/alias.c
+@@ -0,0 +1,40 @@
 +
 +#include <libubox/blobmsg.h>
 +#include "uhttpd.h"
@@ -45,100 +128,15 @@ index 0000000..029597a
 +	struct url_alias *alias;
 +
 +	list_for_each_entry(alias, &aliases, list) {
-+		if (strncmp(url, alias->from, alias->from_l) == 0) {
-+			snprintf(dest, dest_l, alias->to, url + alias->from_l);
-+			dest[dest_l-1] = 0;
-+			return true;
++		if(strncmp(url, alias->from, alias->from_l) == 0) {
++		   snprintf(dest, dest_l, alias->to, url + alias->from_l);
++		   dest[dest_l-1] = 0;
++		   return true;
 +		}
 +	}
 +
-+	// The URL doesn't match any alias, copy as is
++	//The URL doesn't match any alias, copy as is
 +	strncpy(dest, url, dest_l);
 +	dest[dest_l-1] = 0;
 +	return false;
 +}
-+
-diff --git a/file.c b/file.c
-index f16b893..1398396 100644
---- a/file.c
-+++ b/file.c
-@@ -661,9 +661,11 @@ dispatch_find(const char *url, struct path_info *pi)
- }
- 
- static void
--uh_invoke_script(struct client *cl, struct dispatch_handler *d, struct path_info *pi)
-+uh_invoke_script(struct client *cl, struct dispatch_handler *d, char *url, struct path_info *pi)
- {
--	char *url = blobmsg_data(blob_data(cl->hdr.head));
-+	if (url == NULL) {
-+		url = blobmsg_data(blob_data(cl->hdr.head));
-+	}
- 
- 	n_requests++;
- 	d->handle_request(cl, url, pi);
-@@ -683,7 +685,7 @@ static void uh_complete_request(struct client *cl)
- 		list_del(&dr->list);
- 
- 		dr->called = true;
--		uh_invoke_script(dr->cl, dr->d, dr->path ? &dr->pi : NULL);
-+		uh_invoke_script(dr->cl, dr->d, NULL, dr->path ? &dr->pi : NULL);
- 	}
- }
- 
-@@ -757,7 +759,7 @@ uh_invoke_handler(struct client *cl, struct dispatch_handler *d, char *url, stru
- 		return uh_defer_script(cl, d, pi);
- 
- 	cl->dispatch.req_free = uh_complete_request;
--	uh_invoke_script(cl, d, pi);
-+	uh_invoke_script(cl, d, url, pi);
- }
- 
- static bool __handle_file_request(struct client *cl, char *url)
-@@ -801,9 +803,13 @@ void uh_handle_request(struct client *cl)
- {
- 	struct http_request *req = &cl->request;
- 	struct dispatch_handler *d;
--	char *url = blobmsg_data(blob_data(cl->hdr.head));
-+	char url[1024];
-+	char *orig_url = blobmsg_data(blob_data(cl->hdr.head));
- 	char *error_handler;
- 
-+	/* Aliasing */
-+	uh_alias_transform(orig_url, url, 1024);
-+
- 	req->redirect_status = 200;
- 	d = dispatch_find(url, NULL);
- 	if (d)
-diff --git a/main.c b/main.c
-index f88506c..6b1830c 100644
---- a/main.c
-+++ b/main.c
-@@ -72,6 +72,13 @@ static void uh_config_parse(void)
- 				continue;
- 
- 			uh_auth_add(line, col1, col2);
-+		} else if (!strncmp(line, "A:", 2)) {
-+			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
-+				!(col2 = strchr(col1, ':')) || (*col2++ = 0) ||
-+				!(eol = strchr(col2, '\n')) || (*eol++  = 0))
-+				continue;
-+
-+			uh_alias_add(strdup(col1), strdup(col2));
- 		} else if (!strncmp(line, "I:", 2)) {
- 			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
- 				!(eol = strchr(col1, '\n')) || (*eol++  = 0))
-diff --git a/uhttpd.h b/uhttpd.h
-index d6b6985..0fe7be4 100644
---- a/uhttpd.h
-+++ b/uhttpd.h
-@@ -276,6 +276,9 @@ void client_poll_post_data(struct client *cl);
- void uh_client_read_cb(struct client *cl);
- void uh_client_notify_state(struct client *cl);
- 
-+void uh_alias_add(const char *from, const char *to);
-+bool uh_alias_transform(const char *url, char *dest, int dest_l);
-+
- void uh_auth_add(const char *path, const char *user, const char *pass);
- bool uh_auth_check(struct client *cl, struct path_info *pi);
- 
-

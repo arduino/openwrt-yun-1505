@@ -1,7 +1,7 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d2cc545..5e59b1d 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+Index: uhttpd2.git/CMakeLists.txt
+===================================================================
+--- uhttpd2.git.orig/CMakeLists.txt
++++ uhttpd2.git/CMakeLists.txt
 @@ -21,7 +21,7 @@ IF(LIBS STREQUAL "LIBS-NOTFOUND")
  	SET(LIBS "")
  ENDIF()
@@ -11,12 +11,11 @@ index d2cc545..5e59b1d 100644
  IF(TLS_SUPPORT)
  	SET(SOURCES ${SOURCES} tls.c)
  	ADD_DEFINITIONS(-DHAVE_TLS)
-diff --git a/arduino.c b/arduino.c
-new file mode 100644
-index 0000000..76bb377
+Index: uhttpd2.git/arduino.c
+===================================================================
 --- /dev/null
-+++ b/arduino.c
-@@ -0,0 +1,172 @@
++++ uhttpd2.git/arduino.c
+@@ -0,0 +1,192 @@
 +/*
 + * uhttpd - Tiny single-threaded httpd
 + *          Arduino Yun (Bridge) dispatcher
@@ -104,12 +103,12 @@ index 0000000..76bb377
 +	serv_addr.sin_family = AF_INET;
 +	serv_addr.sin_port = htons(bridge_port);
 +	memcpy(&serv_addr.sin_addr.s_addr, server->h_addr, server->h_length);
-+	
++
 +	/* Open socket and try to connect */
 +	int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 +	if (sockfd < 0)
 +		goto error;
-+	if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
++	if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
 +		goto error_connect;
 +
 +	/* Send requested URL (without the prefix) */
@@ -135,14 +134,14 @@ index 0000000..76bb377
 +
 +		/* ...else accumulate bytes */
 +		readed += l;
-+		if (readed <= 6) 
++		if (readed <= 6)
 +			continue;
 +
 +		/* When we have enough bytes check for an header */
 +		if (memcmp("Status", buff, 6)) {
 +			/* No header found, forge one, and send it before data */
 +			printf("Status: 200\r\n\r\n");
-+		} 
++		}
 +		fwrite(buff, 1, readed, stdout);
 +		readed = 0;
 +		header_sent = true;
@@ -167,9 +166,29 @@ index 0000000..76bb377
 +	fflush(stdout);
 +}
 +
++enum arduino_hdr {
++	HDR_AUTHORIZATION,
++	__HDR_MAX
++};
++
 +static void arduino_handle_request(struct client *cl, char *url, struct path_info *pi)
 +{
-+	if (uh_create_process(cl, pi, url, arduino_main)) 
++	static const struct blobmsg_policy hdr_policy[__HDR_MAX] = {
++		[HDR_AUTHORIZATION] = { "authorization", BLOBMSG_TYPE_STRING },
++	};
++	struct blob_attr *tb[__HDR_MAX];
++	blobmsg_parse(hdr_policy, __HDR_MAX, tb, blob_data(cl->hdr.head), blob_len(cl->hdr.head));
++	struct path_info p;
++	p.auth = NULL;
++	p.name = url;
++	if (tb[HDR_AUTHORIZATION])
++		p.auth = blobmsg_data(tb[HDR_AUTHORIZATION]);
++
++	if (!uh_auth_check(cl, &p))
++		/* Authorization required! */
++		return;
++
++	if (uh_create_process(cl, pi, url, arduino_main))
 +		return;
 +
 +	uh_client_error(cl, 500, "Internal Server Error",
@@ -189,10 +208,10 @@ index 0000000..76bb377
 +	.handle_request = arduino_handle_request,
 +};
 +
-diff --git a/main.c b/main.c
-index 30edc86..bcfd7c6 100644
---- a/main.c
-+++ b/main.c
+Index: uhttpd2.git/main.c
+===================================================================
+--- uhttpd2.git.orig/main.c
++++ uhttpd2.git/main.c
 @@ -53,6 +53,8 @@ static void uh_config_parse(void)
  	char line[512];
  	char *col1;
@@ -227,19 +246,19 @@ index 30edc86..bcfd7c6 100644
  		} else if (!strncmp(line, "I:", 2)) {
  			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
  				!(eol = strchr(col1, '\n')) || (*eol++  = 0))
-@@ -217,6 +237,7 @@ int main(int argc, char **argv)
+@@ -238,6 +258,7 @@ int main(int argc, char **argv)
  
  	BUILD_BUG_ON(sizeof(uh_buf) < PATH_MAX);
  
 +	uh_dispatch_add(&arduino_dispatch);
  	uh_dispatch_add(&cgi_dispatch);
- 	init_defaults();
+ 	init_defaults_pre();
  	signal(SIGPIPE, SIG_IGN);
-diff --git a/uhttpd.h b/uhttpd.h
-index af24b35..de715de 100644
---- a/uhttpd.h
-+++ b/uhttpd.h
-@@ -248,6 +248,7 @@ extern int n_clients;
+Index: uhttpd2.git/uhttpd.h
+===================================================================
+--- uhttpd2.git.orig/uhttpd.h
++++ uhttpd2.git/uhttpd.h
+@@ -259,6 +259,7 @@ extern int n_clients;
  extern struct config conf;
  extern const char * const http_versions[];
  extern const char * const http_methods[];
@@ -247,7 +266,7 @@ index af24b35..de715de 100644
  extern struct dispatch_handler cgi_dispatch;
  
  void uh_index_add(const char *filename);
-@@ -281,6 +282,9 @@ void uh_captive_set_host(const char *host, const char *url);
+@@ -294,6 +295,9 @@ void uh_captive_set_host(const char *hos
  bool uh_captive_check_host(const char *host);
  bool uh_captive_redirect(struct client *cl);
  
@@ -255,39 +274,5 @@ index af24b35..de715de 100644
 +void uh_arduino_set_timeout(int timeout);
 +
  void uh_alias_add(const char *from, const char *to);
- bool uh_alias_transform(const char *url, char *dest, int dest_l);
+ void uh_alias_transform(const char *url, char *dest, int test_1);
  
-diff --git a/arduino.c b/arduino.c
-index 76bb377..4057aaa 100644
---- a/arduino.c
-+++ b/arduino.c
-@@ -148,8 +148,28 @@ error:
- 	fflush(stdout);
- }
- 
-+enum arduino_hdr {
-+	HDR_AUTHORIZATION,
-+	__HDR_MAX
-+};
-+
- static void arduino_handle_request(struct client *cl, char *url, struct path_info *pi)
- {
-+	static const struct blobmsg_policy hdr_policy[__HDR_MAX] = {
-+		[HDR_AUTHORIZATION] = { "authorization", BLOBMSG_TYPE_STRING },
-+	};
-+	struct blob_attr *tb[__HDR_MAX];
-+	blobmsg_parse(hdr_policy, __HDR_MAX, tb, blob_data(cl->hdr.head), blob_len(cl->hdr.head));
-+	struct path_info p;
-+	p.auth = NULL;
-+	p.name = url;
-+	if (tb[HDR_AUTHORIZATION])
-+		p.auth = blobmsg_data(tb[HDR_AUTHORIZATION]);
-+
-+	if (!uh_auth_check(cl, &p))
-+		/* Authorization required! */
-+		return;
-+
- 	if (uh_create_process(cl, pi, url, arduino_main)) 
- 		return;
- 
-
