@@ -1,8 +1,8 @@
-Index: uhttpd/file.c
+Index: uhttpd-2015-11-08/file.c
 ===================================================================
---- uhttpd.orig/file.c
-+++ uhttpd/file.c
-@@ -675,9 +675,11 @@ dispatch_find(const char *url, struct pa
+--- uhttpd-2015-11-08.orig/file.c	2015-11-29 17:33:34.306711276 +0100
++++ uhttpd-2015-11-08/file.c	2015-11-29 18:53:58.470632772 +0100
+@@ -678,9 +678,11 @@
  }
  
  static void
@@ -10,13 +10,13 @@ Index: uhttpd/file.c
 +uh_invoke_script(struct client *cl, struct dispatch_handler *d, char *url, struct path_info *pi)
  {
 -	char *url = blobmsg_data(blob_data(cl->hdr.head));
-+	if (url == NULL) {
++	if(url == NULL) {
 +		url = blobmsg_data(blob_data(cl->hdr.head));
 +	}
  
  	n_requests++;
  	d->handle_request(cl, url, pi);
-@@ -699,7 +701,7 @@ static void uh_complete_request(struct c
+@@ -702,7 +704,7 @@
  		cl = dr->cl;
  		dr->called = true;
  		cl->dispatch.data_blocked = false;
@@ -25,7 +25,7 @@ Index: uhttpd/file.c
  		client_poll_post_data(cl);
  	}
  }
-@@ -775,7 +777,7 @@ uh_invoke_handler(struct client *cl, str
+@@ -778,7 +780,7 @@
  		return uh_defer_script(cl, d, pi);
  
  	cl->dispatch.req_free = uh_complete_request;
@@ -34,7 +34,7 @@ Index: uhttpd/file.c
  }
  
  static bool __handle_file_request(struct client *cl, char *url)
-@@ -819,9 +821,13 @@ void uh_handle_request(struct client *cl
+@@ -860,13 +862,17 @@
  {
  	struct http_request *req = &cl->request;
  	struct dispatch_handler *d;
@@ -43,24 +43,42 @@ Index: uhttpd/file.c
 +	char *orig_url = blobmsg_data(blob_data(cl->hdr.head));
  	char *error_handler;
  
+-	url = uh_handle_alias(url);
 +	/*Aliasing*/
 +	uh_alias_transform(orig_url, url, 1024);
 +
++	orig_url = uh_handle_alias(orig_url);
+ 
+-	uh_handler_run(cl, &url, false);
+-	if (!url)
++	uh_handler_run(cl, &orig_url, false);
++	if (!orig_url)
+ 		return;
+ 
  	req->redirect_status = 200;
- 	d = dispatch_find(url, NULL);
- 	if (d)
-Index: uhttpd/main.c
+@@ -877,8 +883,8 @@
+ 	if (__handle_file_request(cl, url))
+ 		return;
+ 
+-	if (uh_handler_run(cl, &url, true) &&
+-	    (!url || __handle_file_request(cl, url)))
++	if (uh_handler_run(cl, &orig_url, true) &&
++	    (!orig_url || __handle_file_request(cl, orig_url)))
+ 		return;
+ 
+ 	req->redirect_status = 404;
+Index: uhttpd-2015-11-08/main.c
 ===================================================================
---- uhttpd.orig/main.c
-+++ uhttpd/main.c
-@@ -72,6 +72,14 @@ static void uh_config_parse(void)
+--- uhttpd-2015-11-08.orig/main.c	2015-11-29 17:33:34.306711276 +0100
++++ uhttpd-2015-11-08/main.c	2015-11-29 17:33:39.934739145 +0100
+@@ -72,6 +72,14 @@
  				continue;
  
  			uh_auth_add(line, col1, col2);
 +		} else if (!strncmp(line, "A:", 2)) {
 +			if(!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
-+				!(col2 = strchr(col1, ':')) || (*col2++ = 0) ||
-+				!(eol = strchr(col2, '\n')) || (*eol++  = 0))
++				!(col2=strchr(col1, ':')) || (*col2++ = 0) ||
++				!(eol = strchr(col2, '\n')) || (*eol++ = 0))
 +				continue;
 +
 +			uh_alias_add(strdup(col1),strdup(col2));
@@ -68,11 +86,11 @@ Index: uhttpd/main.c
  		} else if (!strncmp(line, "I:", 2)) {
  			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
  				!(eol = strchr(col1, '\n')) || (*eol++  = 0))
-Index: uhttpd/uhttpd.h
+Index: uhttpd-2015-11-08/uhttpd.h
 ===================================================================
---- uhttpd.orig/uhttpd.h
-+++ uhttpd/uhttpd.h
-@@ -289,6 +289,9 @@ void client_poll_post_data(struct client
+--- uhttpd-2015-11-08.orig/uhttpd.h	2015-11-29 17:33:34.306711276 +0100
++++ uhttpd-2015-11-08/uhttpd.h	2015-11-29 17:33:39.934739145 +0100
+@@ -297,6 +297,9 @@
  void uh_client_read_cb(struct client *cl);
  void uh_client_notify_state(struct client *cl);
  
@@ -82,23 +100,23 @@ Index: uhttpd/uhttpd.h
  void uh_auth_add(const char *path, const char *user, const char *pass);
  bool uh_auth_check(struct client *cl, struct path_info *pi);
  
-Index: uhttpd/CMakeLists.txt
+Index: uhttpd-2015-11-08/CMakeLists.txt
 ===================================================================
---- uhttpd.orig/CMakeLists.txt
-+++ uhttpd/CMakeLists.txt
-@@ -21,7 +21,7 @@ IF(LIBS STREQUAL "LIBS-NOTFOUND")
+--- uhttpd-2015-11-08.orig/CMakeLists.txt	2015-11-29 17:33:34.306711276 +0100
++++ uhttpd-2015-11-08/CMakeLists.txt	2015-11-29 17:33:39.934739145 +0100
+@@ -21,7 +21,7 @@
  	SET(LIBS "")
  ENDIF()
  
--SET(SOURCES main.c listen.c client.c utils.c file.c auth.c cgi.c relay.c proc.c plugin.c)
-+SET(SOURCES main.c listen.c client.c utils.c file.c alias.c auth.c cgi.c relay.c proc.c plugin.c)
+-SET(SOURCES main.c listen.c client.c utils.c file.c auth.c cgi.c relay.c proc.c plugin.c handler.c)
++SET(SOURCES main.c listen.c client.c utils.c file.c alias.c auth.c cgi.c relay.c proc.c plugin.c handler.c)
  IF(TLS_SUPPORT)
  	SET(SOURCES ${SOURCES} tls.c)
  	ADD_DEFINITIONS(-DHAVE_TLS)
-Index: uhttpd/alias.c
+Index: uhttpd-2015-11-08/alias.c
 ===================================================================
---- /dev/null
-+++ uhttpd/alias.c
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uhttpd-2015-11-08/alias.c	2015-11-29 17:33:39.934739145 +0100
 @@ -0,0 +1,40 @@
 +
 +#include <libubox/blobmsg.h>

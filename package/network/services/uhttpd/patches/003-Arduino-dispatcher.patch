@@ -1,20 +1,7 @@
-Index: uhttpd2.git/CMakeLists.txt
+Index: uhttpd-2015-11-08/arduino.c
 ===================================================================
---- uhttpd2.git.orig/CMakeLists.txt
-+++ uhttpd2.git/CMakeLists.txt
-@@ -21,7 +21,7 @@ IF(LIBS STREQUAL "LIBS-NOTFOUND")
- 	SET(LIBS "")
- ENDIF()
- 
--SET(SOURCES main.c listen.c client.c utils.c file.c captive.c alias.c auth.c cgi.c relay.c proc.c plugin.c)
-+SET(SOURCES main.c listen.c client.c utils.c file.c captive.c alias.c auth.c arduino.c cgi.c relay.c proc.c plugin.c)
- IF(TLS_SUPPORT)
- 	SET(SOURCES ${SOURCES} tls.c)
- 	ADD_DEFINITIONS(-DHAVE_TLS)
-Index: uhttpd2.git/arduino.c
-===================================================================
---- /dev/null
-+++ uhttpd2.git/arduino.c
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ uhttpd-2015-11-08/arduino.c	2015-11-29 16:58:00.776131446 +0100
 @@ -0,0 +1,192 @@
 +/*
 + * uhttpd - Tiny single-threaded httpd
@@ -208,11 +195,11 @@ Index: uhttpd2.git/arduino.c
 +	.handle_request = arduino_handle_request,
 +};
 +
-Index: uhttpd2.git/main.c
+Index: uhttpd-2015-11-08/main.c
 ===================================================================
---- uhttpd2.git.orig/main.c
-+++ uhttpd2.git/main.c
-@@ -53,6 +53,8 @@ static void uh_config_parse(void)
+--- uhttpd-2015-11-08.orig/main.c	2015-11-29 16:58:00.764130936 +0100
++++ uhttpd-2015-11-08/main.c	2015-11-29 16:58:00.780131676 +0100
+@@ -53,6 +53,8 @@
  	char line[512];
  	char *col1;
  	char *col2;
@@ -221,9 +208,9 @@ Index: uhttpd2.git/main.c
  	char *eol;
  
  	if (!path)
-@@ -86,6 +88,24 @@ static void uh_config_parse(void)
+@@ -86,6 +88,24 @@
  				continue;
- 
+  
  			uh_captive_set_host(strdup(col1), strdup(col2));
 +		} else if (!strncmp(line, "Y:", 2)) {
 +			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
@@ -246,7 +233,7 @@ Index: uhttpd2.git/main.c
  		} else if (!strncmp(line, "I:", 2)) {
  			if (!(col1 = strchr(line, ':')) || (*col1++ = 0) ||
  				!(eol = strchr(col1, '\n')) || (*eol++  = 0))
-@@ -238,6 +258,7 @@ int main(int argc, char **argv)
+@@ -242,6 +262,7 @@
  
  	BUILD_BUG_ON(sizeof(uh_buf) < PATH_MAX);
  
@@ -254,11 +241,11 @@ Index: uhttpd2.git/main.c
  	uh_dispatch_add(&cgi_dispatch);
  	init_defaults_pre();
  	signal(SIGPIPE, SIG_IGN);
-Index: uhttpd2.git/uhttpd.h
+Index: uhttpd-2015-11-08/uhttpd.h
 ===================================================================
---- uhttpd2.git.orig/uhttpd.h
-+++ uhttpd2.git/uhttpd.h
-@@ -259,6 +259,7 @@ extern int n_clients;
+--- uhttpd-2015-11-08.orig/uhttpd.h	2015-11-29 16:58:00.764130936 +0100
++++ uhttpd-2015-11-08/uhttpd.h	2015-11-29 16:58:00.780131676 +0100
+@@ -267,6 +267,7 @@
  extern struct config conf;
  extern const char * const http_versions[];
  extern const char * const http_methods[];
@@ -266,7 +253,7 @@ Index: uhttpd2.git/uhttpd.h
  extern struct dispatch_handler cgi_dispatch;
  
  void uh_index_add(const char *filename);
-@@ -294,6 +295,9 @@ void uh_captive_set_host(const char *hos
+@@ -302,6 +303,9 @@
  bool uh_captive_check_host(const char *host);
  bool uh_captive_redirect(struct client *cl);
  
@@ -274,5 +261,18 @@ Index: uhttpd2.git/uhttpd.h
 +void uh_arduino_set_timeout(int timeout);
 +
  void uh_alias_add(const char *from, const char *to);
- void uh_alias_transform(const char *url, char *dest, int test_1);
+ bool uh_alias_transform(const char *url, char *dest, int test_l);
  
+Index: uhttpd-2015-11-08/CMakeLists.txt
+===================================================================
+--- uhttpd-2015-11-08.orig/CMakeLists.txt	2015-11-29 16:58:00.760130689 +0100
++++ uhttpd-2015-11-08/CMakeLists.txt	2015-11-29 16:59:53.144686475 +0100
+@@ -21,7 +21,7 @@
+ 	SET(LIBS "")
+ ENDIF()
+ 
+-SET(SOURCES main.c listen.c client.c utils.c file.c captive.c alias.c auth.c cgi.c relay.c proc.c plugin.c handler.c)
++SET(SOURCES main.c listen.c client.c utils.c file.c captive.c alias.c auth.c arduino.c cgi.c relay.c proc.c plugin.c handler.c)
+ IF(TLS_SUPPORT)
+ 	SET(SOURCES ${SOURCES} tls.c)
+ 	ADD_DEFINITIONS(-DHAVE_TLS)
