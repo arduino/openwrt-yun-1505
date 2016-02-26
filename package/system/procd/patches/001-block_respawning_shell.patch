@@ -1,0 +1,20 @@
+--- a/utils/askfirst.c
++++ b/utils/askfirst.c
+@@ -18,11 +18,17 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <sys/stat.h>
+ 
+ int main(int argc, char **argv)
+ {
+ 	int c;
+ 
++	struct stat fileStat;
++	while (stat("/tmp/block_init_askfirst",&fileStat) >= 0) {
++		sleep(1);
++	}
++
+ 	printf("Please press Enter to activate this console.\n");
+ 	do {
+ 		c = getchar();
