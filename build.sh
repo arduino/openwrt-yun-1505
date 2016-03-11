@@ -48,5 +48,9 @@ fi
 ./scripts/feeds uninstall -a
 ./scripts/feeds install -a -d m
 
+./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx
+
+make oldconfig
+
 make -j$JOBS IGNORE_ERRORS=m $EXTRAFLAGS
 
