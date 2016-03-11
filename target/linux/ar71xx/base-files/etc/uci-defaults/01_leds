@@ -585,6 +585,11 @@ zcn-1523h-5)
 	ucidef_set_led_netdev "lan1" "lan1" "zcn-1523h:green:lan1" "eth0"
 	ucidef_set_led_netdev "lan2" "lan2" "zcn-1523h:green:lan2" "eth1"
 	;;
+nuy)
+	ucidef_set_led_netdev "wan" "WAN" "yun-shield:orange:wan" "eth1"
+	ucidef_set_led_netdev "wlan" "WLAN" "yun-shield:blue:wlan" "wlan0"
+	;;
+
 esac
 
 ucidef_commit_leds

@@ -384,6 +384,12 @@ ar71xx_board_detect() {
 	*"Archer C7")
 		name="archer-c7"
 		;;
+	*"Arduino Yun")
+		name="yun"
+		;;
+	*"Yun Shield")
+		name="nuy"
+		;;
 	*"Atheros AP96")
 		name="ap96"
 		;;
