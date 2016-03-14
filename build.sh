@@ -48,7 +48,7 @@ fi
 ./scripts/feeds uninstall -a
 ./scripts/feeds install -a -d m
 
-./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx
+./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
 
 make oldconfig
 

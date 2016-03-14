@@ -3308,7 +3308,6 @@ CONFIG_PACKAGE_ruby-zlib=m
 # javascript
 #
 CONFIG_PACKAGE_paho-javascript=m
-CONFIG_PACKAGE_vala=m
 
 #
 # Libraries
@@ -3317,7 +3316,7 @@ CONFIG_PACKAGE_vala=m
 #
 # Compression
 #
-CONFIG_PACKAGE_libbz2=y
+CONFIG_PACKAGE_libbz2=m
 CONFIG_PACKAGE_liblzma=m
 
 #
@@ -3325,7 +3324,7 @@ CONFIG_PACKAGE_liblzma=m
 #
 CONFIG_PACKAGE_libacl=m
 CONFIG_PACKAGE_libattr=m
-# CONFIG_PACKAGE_libext2fs is not set
+CONFIG_PACKAGE_libext2fs=m
 CONFIG_PACKAGE_libfuse=m
 CONFIG_PACKAGE_libow=m
 CONFIG_PACKAGE_libow-capi=m
@@ -3881,7 +3880,7 @@ CONFIG_PACKAGE_libseccomp=m
 CONFIG_PACKAGE_libsensors=m
 CONFIG_PACKAGE_libshout=m
 CONFIG_PACKAGE_libsigcxx=m
-# CONFIG_PACKAGE_libsmartcols is not set
+CONFIG_PACKAGE_libsmartcols=m
 CONFIG_PACKAGE_libsndfile=m
 # CONFIG_PACKAGE_libsocks is not set
 CONFIG_PACKAGE_libsodium=m
@@ -7176,14 +7175,14 @@ CONFIG_PACKAGE_zile=m
 #
 CONFIG_PACKAGE_acl=m
 CONFIG_PACKAGE_attr=m
-# CONFIG_PACKAGE_badblocks is not set
+CONFIG_PACKAGE_badblocks=m
 CONFIG_PACKAGE_btrfs-progs=m
-# CONFIG_PACKAGE_debugfs is not set
+CONFIG_PACKAGE_debugfs=m
 CONFIG_PACKAGE_dosfsck=m
 CONFIG_PACKAGE_dosfslabel=m
-# CONFIG_PACKAGE_dumpe2fs is not set
-# CONFIG_PACKAGE_e2freefrag is not set
-# CONFIG_PACKAGE_e2fsprogs is not set
+CONFIG_PACKAGE_dumpe2fs=m
+CONFIG_PACKAGE_e2freefrag=m
+CONFIG_PACKAGE_e2fsprogs=m
 CONFIG_PACKAGE_f2fs-tools=m
 
 #
@@ -7194,7 +7193,7 @@ CONFIG_F2FS_UTILS_fibmap_f2fs=y
 CONFIG_F2FS_UTILS_fsck_f2fs=y
 CONFIG_F2FS_UTILS_dump_f2fs=y
 CONFIG_F2FS_UTILS_mkfs_f2fs=y
-# CONFIG_PACKAGE_filefrag is not set
+CONFIG_PACKAGE_filefrag=m
 CONFIG_PACKAGE_fuse-utils=m
 CONFIG_PACKAGE_hfsfsck=m
 CONFIG_PACKAGE_mkdosfs=m
@@ -7208,9 +7207,9 @@ CONFIG_PACKAGE_ntfs-3g-utils=m
 CONFIG_PACKAGE_ntfsprogs_ntfs-3g=m
 CONFIG_PACKAGE_owfs=m
 CONFIG_PACKAGE_owshell=m
-# CONFIG_PACKAGE_resize2fs is not set
+CONFIG_PACKAGE_resize2fs=m
 CONFIG_PACKAGE_sysfsutils=m
-# CONFIG_PACKAGE_tune2fs is not set
+CONFIG_PACKAGE_tune2fs=m
 # CONFIG_PACKAGE_xfs-fsck is not set
 # CONFIG_PACKAGE_xfs-growfs is not set
 # CONFIG_PACKAGE_xfs-mkfs is not set
@@ -7264,15 +7263,15 @@ CONFIG_PACKAGE_unixodbc-tools=m
 # disc
 #
 CONFIG_PACKAGE_blkid=y
-# CONFIG_PACKAGE_cfdisk is not set
-# CONFIG_PACKAGE_fdisk is not set
-# CONFIG_PACKAGE_findfs is not set
+CONFIG_PACKAGE_cfdisk=m
+CONFIG_PACKAGE_fdisk=m
+CONFIG_PACKAGE_findfs=m
 CONFIG_PACKAGE_hd-idle=m
 CONFIG_PACKAGE_hdparm=m
-# CONFIG_PACKAGE_lsblk is not set
+CONFIG_PACKAGE_lsblk=m
 CONFIG_PACKAGE_lvm2=m
 # CONFIG_PACKAGE_partx-utils is not set
-# CONFIG_PACKAGE_sfdisk is not set
+CONFIG_PACKAGE_sfdisk=m
 # CONFIG_PACKAGE_swap-utils is not set
 # CONFIG_PACKAGE_wipefs is not set
 
