@@ -2149,7 +2149,7 @@ CONFIG_PACKAGE_procd=y
 # CONFIG_PROCD_SHOW_BOOT is not set
 # CONFIG_PROCD_ZRAM_TMPFS is not set
 CONFIG_PACKAGE_qos-scripts=m
-CONFIG_PACKAGE_reset-serial=m
+CONFIG_PACKAGE_reset-serial=y
 CONFIG_PACKAGE_resolveip=m
 CONFIG_PACKAGE_rpcd=y
 # CONFIG_PACKAGE_rpcd-mod-file is not set
@@ -2157,7 +2157,7 @@ CONFIG_PACKAGE_rpcd=y
 # CONFIG_PACKAGE_rpcd-mod-rpcsys is not set
 CONFIG_PACKAGE_sqm-scripts=m
 CONFIG_PACKAGE_swconfig=y
-CONFIG_PACKAGE_uSDaemon=m
+CONFIG_PACKAGE_uSDaemon=y
 CONFIG_PACKAGE_ubox=y
 CONFIG_PACKAGE_ubus=y
 CONFIG_PACKAGE_ubusd=y
@@ -2165,8 +2165,8 @@ CONFIG_PACKAGE_uci=y
 # CONFIG_PACKAGE_udev is not set
 CONFIG_PACKAGE_usign=y
 CONFIG_PACKAGE_wireless-tools=m
-CONFIG_PACKAGE_yun-conf=m
-CONFIG_PACKAGE_yun-scripts=m
+CONFIG_PACKAGE_yun-conf=y
+CONFIG_PACKAGE_yun-scripts=y
 CONFIG_PACKAGE_zram-swap=m
 
 #
@@ -3280,32 +3280,32 @@ CONFIG_PACKAGE_perlbase-xsloader=m
 #
 CONFIG_PACKAGE_micropython=m
 CONFIG_PACKAGE_micropython-lib=m
-CONFIG_PACKAGE_python=m
-CONFIG_PACKAGE_python-base=m
-CONFIG_PACKAGE_python-codecs=m
-CONFIG_PACKAGE_python-compiler=m
-CONFIG_PACKAGE_python-ctypes=m
-CONFIG_PACKAGE_python-cwiid=m
-CONFIG_PACKAGE_python-db=m
-CONFIG_PACKAGE_python-decimal=m
-CONFIG_PACKAGE_python-distutils=m
-CONFIG_PACKAGE_python-dns=m
-CONFIG_PACKAGE_python-email=m
-CONFIG_PACKAGE_python-gdbm=m
-CONFIG_PACKAGE_python-imglib=m
-CONFIG_PACKAGE_python-light=m
-CONFIG_PACKAGE_python-logging=m
-CONFIG_PACKAGE_python-multiprocessing=m
-CONFIG_PACKAGE_python-mysql=m
-CONFIG_PACKAGE_python-ncurses=m
-CONFIG_PACKAGE_python-openssl=m
-CONFIG_PACKAGE_python-pip=m
-CONFIG_PACKAGE_python-pydoc=m
-CONFIG_PACKAGE_python-pyserial=m
-CONFIG_PACKAGE_python-setuptools=m
-CONFIG_PACKAGE_python-sqlite3=m
-CONFIG_PACKAGE_python-unittest=m
-CONFIG_PACKAGE_python-xml=m
+CONFIG_PACKAGE_python=y
+CONFIG_PACKAGE_python-base=y
+CONFIG_PACKAGE_python-codecs=y
+CONFIG_PACKAGE_python-compiler=y
+CONFIG_PACKAGE_python-ctypes=y
+# CONFIG_PACKAGE_python-cwiid is not set
+CONFIG_PACKAGE_python-db=y
+CONFIG_PACKAGE_python-decimal=y
+CONFIG_PACKAGE_python-distutils=y
+# CONFIG_PACKAGE_python-dns is not set
+CONFIG_PACKAGE_python-email=y
+CONFIG_PACKAGE_python-gdbm=y
+# CONFIG_PACKAGE_python-imglib is not set
+CONFIG_PACKAGE_python-light=y
+CONFIG_PACKAGE_python-logging=y
+CONFIG_PACKAGE_python-multiprocessing=y
+# CONFIG_PACKAGE_python-mysql is not set
+CONFIG_PACKAGE_python-ncurses=y
+CONFIG_PACKAGE_python-openssl=y
+# CONFIG_PACKAGE_python-pip is not set
+CONFIG_PACKAGE_python-pydoc=y
+# CONFIG_PACKAGE_python-pyserial is not set
+# CONFIG_PACKAGE_python-setuptools is not set
+CONFIG_PACKAGE_python-sqlite3=y
+CONFIG_PACKAGE_python-unittest=y
+CONFIG_PACKAGE_python-xml=y
 CONFIG_PACKAGE_python-yaml=m
 CONFIG_PACKAGE_python3=m
 CONFIG_PACKAGE_python3-asyncio=m
@@ -3330,7 +3330,7 @@ CONFIG_PACKAGE_python3-setuptools=m
 CONFIG_PACKAGE_python3-sqlite3=m
 CONFIG_PACKAGE_python3-unittest=m
 CONFIG_PACKAGE_python3-xml=m
-CONFIG_PACKAGE_simplejson=m
+CONFIG_PACKAGE_simplejson=y
 
 #
 # Ruby
@@ -3615,7 +3615,7 @@ CONFIG_PACKAGE_libsrtp=m
 # database
 #
 CONFIG_PACKAGE_libpq=m
-CONFIG_PACKAGE_libsqlite3=m
+CONFIG_PACKAGE_libsqlite3=y
 CONFIG_PACKAGE_pgsqlodbc=m
 CONFIG_PACKAGE_tdb=m
 CONFIG_PACKAGE_unixodbc=m
@@ -3682,7 +3682,7 @@ CONFIG_PACKAGE_libaudiofile=m
 CONFIG_PACKAGE_libavahi-client=m
 CONFIG_PACKAGE_libavahi-compat-libdnssd=m
 CONFIG_PACKAGE_libavahi-dbus-support=m
-CONFIG_PACKAGE_libavahi-nodbus-support=m
+CONFIG_PACKAGE_libavahi-nodbus-support=y
 CONFIG_PACKAGE_libavl=m
 CONFIG_PACKAGE_libbfd=m
 CONFIG_PACKAGE_libblkid=y
@@ -3738,9 +3738,9 @@ CONFIG_LIBCURL_PROXY=y
 # CONFIG_LIBCURL_LIBCURL_OPTION is not set
 # CONFIG_LIBCURL_VERBOSE is not set
 CONFIG_PACKAGE_libcwiid=m
-CONFIG_PACKAGE_libdaemon=m
+CONFIG_PACKAGE_libdaemon=y
 CONFIG_PACKAGE_libdaq=m
-CONFIG_PACKAGE_libdb47=m
+CONFIG_PACKAGE_libdb47=y
 CONFIG_PACKAGE_libdb47xx=m
 CONFIG_PACKAGE_libdbi=m
 CONFIG_PACKAGE_libdbd-mysql=m
@@ -3771,18 +3771,18 @@ CONFIG_PACKAGE_libexpat=m
 CONFIG_PACKAGE_libf2fs=m
 CONFIG_PACKAGE_libfaad2=m
 # CONFIG_FAAD2_ALWAYS_USE_FLOATING_POINT is not set
-CONFIG_PACKAGE_libffi=m
+CONFIG_PACKAGE_libffi=y
 CONFIG_PACKAGE_libffmpeg-full=m
 CONFIG_PACKAGE_libffmpeg-mini=m
 CONFIG_PACKAGE_libflac=m
 CONFIG_PACKAGE_libfreetype=m
-CONFIG_PACKAGE_libftdi=m
-CONFIG_PACKAGE_libftdi1=m
+CONFIG_PACKAGE_libftdi=y
+CONFIG_PACKAGE_libftdi1=y
 CONFIG_PACKAGE_libgcrypt=m
 CONFIG_PACKAGE_libgd=m
-CONFIG_PACKAGE_libgdbm=m
+CONFIG_PACKAGE_libgdbm=y
 CONFIG_PACKAGE_libgmp=m
-CONFIG_PACKAGE_libgpg-error=m
+CONFIG_PACKAGE_libgpg-error=y
 CONFIG_PACKAGE_libhamlib=m
 CONFIG_PACKAGE_hamlib-adat=m
 CONFIG_PACKAGE_hamlib-alinco=m
@@ -3941,7 +3941,7 @@ CONFIG_PACKAGE_libpcap=m
 # Configuration
 #
 # CONFIG_PCAP_HAS_USB is not set
-CONFIG_PACKAGE_libpcre=m
+CONFIG_PACKAGE_libpcre=y
 # CONFIG_PACKAGE_libpcre16 is not set
 # CONFIG_PACKAGE_libpcrecpp is not set
 CONFIG_PACKAGE_libpcsclite=m
@@ -4011,7 +4011,7 @@ CONFIG_PACKAGE_libusbmuxd=m
 # CONFIG_PACKAGE_libustream-openssl is not set
 CONFIG_PACKAGE_libustream-polarssl=y
 CONFIG_PACKAGE_libuuid=y
-CONFIG_PACKAGE_libuv=m
+CONFIG_PACKAGE_libuv=y
 CONFIG_PACKAGE_libuvc=m
 CONFIG_PACKAGE_libv4l=m
 CONFIG_PACKAGE_libvorbis=m
@@ -4023,7 +4023,7 @@ CONFIG_PACKAGE_libwebsockets-openssl=m
 CONFIG_PACKAGE_libwrap=m
 CONFIG_PACKAGE_libxerces-c=m
 CONFIG_PACKAGE_libxerces-c-samples=m
-CONFIG_PACKAGE_libxml2=m
+CONFIG_PACKAGE_libxml2=y
 CONFIG_PACKAGE_libxslt=m
 CONFIG_PACKAGE_libyang=m
 CONFIG_PACKAGE_libzdb=m
@@ -4058,13 +4058,13 @@ CONFIG_PACKAGE_zlib=y
 #
 # 1. Collections
 #
-CONFIG_PACKAGE_luci=m
-CONFIG_PACKAGE_luci-ssl=m
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-ssl=y
 
 #
 # 2. Modules
 #
-CONFIG_PACKAGE_luci-base=m
+CONFIG_PACKAGE_luci-base=y
 # CONFIG_LUCI_SRCDIET is not set
 
 #
@@ -4095,7 +4095,7 @@ CONFIG_PACKAGE_luci-base=m
 # CONFIG_LUCI_LANG_vi is not set
 # CONFIG_LUCI_LANG_zh-cn is not set
 # CONFIG_LUCI_LANG_zh-tw is not set
-CONFIG_PACKAGE_luci-mod-admin-full=m
+CONFIG_PACKAGE_luci-mod-admin-full=y
 CONFIG_PACKAGE_luci-mod-failsafe=m
 CONFIG_PACKAGE_luci-mod-freifunk=m
 CONFIG_PACKAGE_luci-mod-freifunk-community=m
@@ -4105,7 +4105,7 @@ CONFIG_PACKAGE_luci-mod-rpc=m
 # 3. Applications
 #
 CONFIG_PACKAGE_luci-app-ahcp=m
-CONFIG_PACKAGE_luci-app-arduino-webpanel=m
+CONFIG_PACKAGE_luci-app-arduino-webpanel=y
 CONFIG_PACKAGE_luci-app-asterisk=m
 CONFIG_PACKAGE_luci-app-bcp38=m
 CONFIG_PACKAGE_luci-app-bird4=m
@@ -4117,7 +4117,7 @@ CONFIG_PACKAGE_luci-app-cshark=m
 CONFIG_PACKAGE_luci-app-ddns=m
 CONFIG_PACKAGE_luci-app-diag-core=m
 CONFIG_PACKAGE_luci-app-dump1090=m
-CONFIG_PACKAGE_luci-app-firewall=m
+CONFIG_PACKAGE_luci-app-firewall=y
 CONFIG_PACKAGE_luci-app-freifunk-diagnostics=m
 CONFIG_PACKAGE_luci-app-freifunk-policyrouting=m
 CONFIG_PACKAGE_luci-app-freifunk-widgets=m
@@ -4169,7 +4169,7 @@ CONFIG_PACKAGE_luci-app-wshaper=m
 #
 # 4. Themes
 #
-CONFIG_PACKAGE_luci-theme-bootstrap=m
+CONFIG_PACKAGE_luci-theme-bootstrap=y
 CONFIG_PACKAGE_luci-theme-freifunk-bno=m
 CONFIG_PACKAGE_luci-theme-freifunk-generic=m
 CONFIG_PACKAGE_luci-theme-openwrt=m
@@ -4178,20 +4178,20 @@ CONFIG_PACKAGE_luci-theme-openwrt=m
 # 5. Protocols
 #
 CONFIG_PACKAGE_luci-proto-3g=m
-CONFIG_PACKAGE_luci-proto-ipv6=m
+CONFIG_PACKAGE_luci-proto-ipv6=y
 CONFIG_PACKAGE_luci-proto-openconnect=m
-CONFIG_PACKAGE_luci-proto-ppp=m
+CONFIG_PACKAGE_luci-proto-ppp=y
 CONFIG_PACKAGE_luci-proto-relay=m
 
 #
 # 6. Libraries
 #
 CONFIG_PACKAGE_luci-lib-httpclient=m
-CONFIG_PACKAGE_luci-lib-ip=m
-CONFIG_PACKAGE_luci-lib-json=m
+CONFIG_PACKAGE_luci-lib-ip=y
+CONFIG_PACKAGE_luci-lib-json=y
 CONFIG_PACKAGE_luci-lib-jsonc=m
 CONFIG_PACKAGE_luci-lib-luaneightbl=m
-CONFIG_PACKAGE_luci-lib-nixio=m
+CONFIG_PACKAGE_luci-lib-nixio=y
 CONFIG_PACKAGE_luci-lib-px5g=m
 
 #
@@ -5497,7 +5497,7 @@ CONFIG_RSYNC_zlib=y
 CONFIG_PACKAGE_rsyncd=m
 CONFIG_PACKAGE_vsftpd=m
 CONFIG_PACKAGE_vsftpd-tls=m
-CONFIG_PACKAGE_wget=m
+CONFIG_PACKAGE_wget=y
 CONFIG_PACKAGE_wget-nossl=m
 
 #
@@ -5633,11 +5633,11 @@ CONFIG_PACKAGE_freeradius2-utils=m
 #
 CONFIG_PACKAGE_announce=m
 CONFIG_PACKAGE_avahi-autoipd=m
-CONFIG_PACKAGE_avahi-daemon-service-http=m
-CONFIG_PACKAGE_avahi-daemon-service-ssh=m
+CONFIG_PACKAGE_avahi-daemon-service-http=y
+CONFIG_PACKAGE_avahi-daemon-service-ssh=y
 CONFIG_PACKAGE_avahi-dbus-daemon=m
-CONFIG_PACKAGE_avahi-dnsconfd=m
-CONFIG_PACKAGE_avahi-nodbus-daemon=m
+CONFIG_PACKAGE_avahi-dnsconfd=y
+CONFIG_PACKAGE_avahi-nodbus-daemon=y
 CONFIG_PACKAGE_avahi-utils=m
 CONFIG_PACKAGE_bind-check=m
 CONFIG_PACKAGE_bind-client=m
@@ -5881,7 +5881,7 @@ CONFIG_PACKAGE_openssh-server=m
 CONFIG_PACKAGE_openssh-server-pam=m
 CONFIG_PACKAGE_openssh-sftp-avahi-service=m
 CONFIG_PACKAGE_openssh-sftp-client=m
-CONFIG_PACKAGE_openssh-sftp-server=m
+CONFIG_PACKAGE_openssh-sftp-server=y
 CONFIG_PACKAGE_sshtunnel=m
 
 #
@@ -7139,13 +7139,13 @@ CONFIG_PACKAGE_socat=m
 CONFIG_SOCAT_SSL=y
 CONFIG_PACKAGE_softflowd=m
 # CONFIG_PACKAGE_soloscli is not set
-CONFIG_PACKAGE_spacebrew=m
+CONFIG_PACKAGE_spacebrew=y
 CONFIG_PACKAGE_sstp-client=m
 CONFIG_PACKAGE_stunnel=m
 CONFIG_PACKAGE_tayga=m
 CONFIG_PACKAGE_tcpdump=m
 # CONFIG_PACKAGE_tcpdump-mini is not set
-CONFIG_PACKAGE_temboo=m
+CONFIG_PACKAGE_temboo=y
 CONFIG_PACKAGE_tgt=m
 CONFIG_PACKAGE_tor=m
 CONFIG_PACKAGE_tor-fw-helper=m
@@ -7253,7 +7253,7 @@ CONFIG_PACKAGE_zip=m
 # Editors
 #
 CONFIG_PACKAGE_joe=m
-CONFIG_PACKAGE_nano=m
+CONFIG_PACKAGE_nano=y
 CONFIG_PACKAGE_vim=m
 CONFIG_PACKAGE_vim-full=m
 CONFIG_PACKAGE_vim-help=m
@@ -7383,14 +7383,14 @@ CONFIG_PACKAGE_zoneinfo-southamerica=m
 CONFIG_PACKAGE_alsa-utils=m
 CONFIG_PACKAGE_alsa-utils-seq=m
 CONFIG_PACKAGE_alsa-utils-tests=m
-CONFIG_PACKAGE_avrdude=m
+CONFIG_PACKAGE_avrdude=y
 CONFIG_PACKAGE_bandwidthd=m
 CONFIG_PACKAGE_bandwidthd-pgsql=m
 CONFIG_PACKAGE_bash=m
 CONFIG_PACKAGE_bc=m
 CONFIG_PACKAGE_bluez-examples=m
 CONFIG_PACKAGE_bluez-utils=m
-CONFIG_PACKAGE_bossa=m
+CONFIG_PACKAGE_bossa=y
 CONFIG_PACKAGE_cal=m
 CONFIG_PACKAGE_ccrypt=m
 CONFIG_PACKAGE_cmdpad=m
@@ -7551,7 +7551,7 @@ CONFIG_PACKAGE_coreutils-wc=m
 CONFIG_PACKAGE_coreutils-who=m
 CONFIG_PACKAGE_coreutils-whoami=m
 CONFIG_PACKAGE_coreutils-yes=m
-CONFIG_PACKAGE_cpu-mcu-bridge=m
+CONFIG_PACKAGE_cpu-mcu-bridge=y
 CONFIG_PACKAGE_cryptsetup=m
 CONFIG_PACKAGE_cryptsetup-openssl=m
 CONFIG_PACKAGE_dbus=m
@@ -7614,7 +7614,7 @@ CONFIG_PACKAGE_freesub=m
 CONFIG_PACKAGE_ftdi_eeprom=m
 CONFIG_PACKAGE_gammu=m
 CONFIG_PACKAGE_getopt=m
-CONFIG_PACKAGE_gnupg=m
+CONFIG_PACKAGE_gnupg=y
 CONFIG_PACKAGE_gpioctl-sysfs=m
 CONFIG_PACKAGE_grep=m
 CONFIG_PACKAGE_hamlib=m
@@ -7864,7 +7864,7 @@ CONFIG_PACKAGE_px5g=y
 CONFIG_PACKAGE_qrencode=m
 # CONFIG_PACKAGE_rbcfg is not set
 # CONFIG_PACKAGE_rename is not set
-CONFIG_PACKAGE_rng-tools=m
+CONFIG_PACKAGE_rng-tools=y
 # CONFIG_PACKAGE_robocfg is not set
 CONFIG_PACKAGE_rrdcgi1=m
 CONFIG_PACKAGE_rrdtool1=m
@@ -7922,7 +7922,7 @@ CONFIG_PACKAGE_taskwarrior=m
 CONFIG_PACKAGE_tcsh=m
 CONFIG_PACKAGE_tiff-utils=m
 CONFIG_PACKAGE_tmux=m
-CONFIG_PACKAGE_triggerhappy=m
+CONFIG_PACKAGE_triggerhappy=y
 CONFIG_PACKAGE_uboot-envtools=y
 # CONFIG_UBOOT_ENVTOOLS_UBI is not set
 # CONFIG_PACKAGE_ugps is not set
