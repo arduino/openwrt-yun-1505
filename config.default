@@ -306,8 +306,8 @@ CONFIG_KERNEL_DEBUG_KERNEL=y
 CONFIG_KERNEL_DEBUG_INFO=y
 # CONFIG_KERNEL_DYNAMIC_DEBUG is not set
 # CONFIG_KERNEL_KPROBES is not set
-# CONFIG_KERNEL_AIO is not set
-# CONFIG_KERNEL_DIRECT_IO is not set
+CONFIG_KERNEL_AIO=y
+CONFIG_KERNEL_DIRECT_IO=y
 # CONFIG_KERNEL_FHANDLE is not set
 # CONFIG_KERNEL_FANOTIFY is not set
 # CONFIG_KERNEL_BLK_DEV_BSG is not set
@@ -2233,7 +2233,7 @@ CONFIG_PACKAGE_yun-scripts=y
 # CONFIG_PACKAGE_kmod-aoe is not set
 # CONFIG_PACKAGE_kmod-ata-core is not set
 # CONFIG_PACKAGE_kmod-block2mtd is not set
-# CONFIG_PACKAGE_kmod-dm is not set
+CONFIG_PACKAGE_kmod-dm=m
 # CONFIG_PACKAGE_kmod-ide-core is not set
 CONFIG_PACKAGE_kmod-loop=y
 # CONFIG_PACKAGE_kmod-md-mod is not set
@@ -2245,98 +2245,141 @@ CONFIG_PACKAGE_kmod-scsi-core=y
 #
 # CAN Support
 #
-# CONFIG_PACKAGE_kmod-can is not set
+CONFIG_PACKAGE_kmod-can=m
+CONFIG_PACKAGE_kmod-can-bcm=m
+CONFIG_PACKAGE_kmod-can-c-can=m
+CONFIG_PACKAGE_kmod-can-c-can-pci=m
+CONFIG_PACKAGE_kmod-can-c-can-platform=m
+CONFIG_PACKAGE_kmod-can-gw=m
+CONFIG_PACKAGE_kmod-can-raw=m
+CONFIG_PACKAGE_kmod-can-slcan=m
+CONFIG_PACKAGE_kmod-can-usb-8dev=m
+CONFIG_PACKAGE_kmod-can-usb-ems=m
+CONFIG_PACKAGE_kmod-can-usb-esd=m
+CONFIG_PACKAGE_kmod-can-usb-kvaser=m
+CONFIG_PACKAGE_kmod-can-usb-peak=m
+CONFIG_PACKAGE_kmod-can-vcan=m
 
 #
 # Cryptographic API modules
 #
-# CONFIG_PACKAGE_kmod-crypto-aead is not set
+CONFIG_PACKAGE_kmod-crypto-aead=m
 CONFIG_PACKAGE_kmod-crypto-aes=y
 CONFIG_PACKAGE_kmod-crypto-arc4=y
-# CONFIG_PACKAGE_kmod-crypto-authenc is not set
-# CONFIG_PACKAGE_kmod-crypto-cbc is not set
-# CONFIG_PACKAGE_kmod-crypto-ccm is not set
+CONFIG_PACKAGE_kmod-crypto-authenc=m
+CONFIG_PACKAGE_kmod-crypto-cbc=m
+CONFIG_PACKAGE_kmod-crypto-ccm=m
 CONFIG_PACKAGE_kmod-crypto-core=y
-# CONFIG_PACKAGE_kmod-crypto-crc32c is not set
-# CONFIG_PACKAGE_kmod-crypto-ctr is not set
-# CONFIG_PACKAGE_kmod-crypto-deflate is not set
-# CONFIG_PACKAGE_kmod-crypto-des is not set
-# CONFIG_PACKAGE_kmod-crypto-ecb is not set
-# CONFIG_PACKAGE_kmod-crypto-fcrypt is not set
-# CONFIG_PACKAGE_kmod-crypto-gcm is not set
-# CONFIG_PACKAGE_kmod-crypto-gf128 is not set
-# CONFIG_PACKAGE_kmod-crypto-ghash is not set
+CONFIG_PACKAGE_kmod-crypto-crc32c=m
+CONFIG_PACKAGE_kmod-crypto-ctr=m
+CONFIG_PACKAGE_kmod-crypto-deflate=m
+CONFIG_PACKAGE_kmod-crypto-des=m
+CONFIG_PACKAGE_kmod-crypto-ecb=m
+CONFIG_PACKAGE_kmod-crypto-fcrypt=m
+CONFIG_PACKAGE_kmod-crypto-gcm=m
+CONFIG_PACKAGE_kmod-crypto-gf128=m
+CONFIG_PACKAGE_kmod-crypto-ghash=m
 CONFIG_PACKAGE_kmod-crypto-hash=y
-# CONFIG_PACKAGE_kmod-crypto-hmac is not set
+CONFIG_PACKAGE_kmod-crypto-hmac=m
 # CONFIG_PACKAGE_kmod-crypto-hw-geode is not set
 # CONFIG_PACKAGE_kmod-crypto-hw-hifn-795x is not set
 # CONFIG_PACKAGE_kmod-crypto-hw-padlock is not set
 # CONFIG_PACKAGE_kmod-crypto-hw-talitos is not set
-# CONFIG_PACKAGE_kmod-crypto-iv is not set
-# CONFIG_PACKAGE_kmod-crypto-manager is not set
-# CONFIG_PACKAGE_kmod-crypto-md4 is not set
-# CONFIG_PACKAGE_kmod-crypto-md5 is not set
+CONFIG_PACKAGE_kmod-crypto-iv=m
+CONFIG_PACKAGE_kmod-crypto-manager=m
+CONFIG_PACKAGE_kmod-crypto-md4=m
+CONFIG_PACKAGE_kmod-crypto-md5=m
 # CONFIG_PACKAGE_kmod-crypto-michael-mic is not set
-# CONFIG_PACKAGE_kmod-crypto-misc is not set
-# CONFIG_PACKAGE_kmod-crypto-null is not set
-# CONFIG_PACKAGE_kmod-crypto-ocf is not set
-# CONFIG_PACKAGE_kmod-crypto-pcbc is not set
-# CONFIG_PACKAGE_kmod-crypto-pcompress is not set
-# CONFIG_PACKAGE_kmod-crypto-rng is not set
-# CONFIG_PACKAGE_kmod-crypto-seqiv is not set
-# CONFIG_PACKAGE_kmod-crypto-sha1 is not set
-# CONFIG_PACKAGE_kmod-crypto-sha256 is not set
+CONFIG_PACKAGE_kmod-crypto-misc=m
+CONFIG_PACKAGE_kmod-crypto-null=m
+CONFIG_PACKAGE_kmod-crypto-ocf=m
+CONFIG_PACKAGE_kmod-crypto-ocf-hifn7751=m
+CONFIG_PACKAGE_kmod-crypto-ocf-hifnhipp=m
+CONFIG_PACKAGE_kmod-crypto-pcbc=m
+CONFIG_PACKAGE_kmod-crypto-pcompress=m
+CONFIG_PACKAGE_kmod-crypto-rng=m
+CONFIG_PACKAGE_kmod-crypto-seqiv=m
+CONFIG_PACKAGE_kmod-crypto-sha1=m
+CONFIG_PACKAGE_kmod-crypto-sha256=m
 # CONFIG_PACKAGE_kmod-crypto-test is not set
-# CONFIG_PACKAGE_kmod-crypto-user is not set
-# CONFIG_PACKAGE_kmod-crypto-wq is not set
+CONFIG_PACKAGE_kmod-crypto-user=m
+CONFIG_PACKAGE_kmod-crypto-wq=m
 # CONFIG_PACKAGE_kmod-crypto-xts is not set
-# CONFIG_PACKAGE_kmod-cryptodev is not set
+CONFIG_PACKAGE_kmod-cryptodev=m
 
 #
 # Filesystems
 #
-# CONFIG_PACKAGE_kmod-fs-afs is not set
-# CONFIG_PACKAGE_kmod-fs-autofs4 is not set
-# CONFIG_PACKAGE_kmod-fs-btrfs is not set
-# CONFIG_PACKAGE_kmod-fs-cifs is not set
-# CONFIG_PACKAGE_kmod-fs-configfs is not set
-# CONFIG_PACKAGE_kmod-fs-cramfs is not set
-# CONFIG_PACKAGE_kmod-fs-exfat is not set
-# CONFIG_PACKAGE_kmod-fs-exportfs is not set
+CONFIG_PACKAGE_kmod-fs-afs=m
+CONFIG_PACKAGE_kmod-fs-autofs4=m
+CONFIG_PACKAGE_kmod-fs-btrfs=m
+CONFIG_PACKAGE_kmod-fs-cifs=m
+CONFIG_PACKAGE_kmod-fs-configfs=m
+CONFIG_PACKAGE_kmod-fs-cramfs=m
+CONFIG_PACKAGE_kmod-fs-exfat=m
+CONFIG_PACKAGE_kmod-fs-exportfs=m
 CONFIG_PACKAGE_kmod-fs-ext4=y
-# CONFIG_PACKAGE_kmod-fs-f2fs is not set
-# CONFIG_PACKAGE_kmod-fs-fscache is not set
-CONFIG_PACKAGE_kmod-fs-hfs=y
-CONFIG_PACKAGE_kmod-fs-hfsplus=y
-# CONFIG_PACKAGE_kmod-fs-isofs is not set
-# CONFIG_PACKAGE_kmod-fs-jfs is not set
-# CONFIG_PACKAGE_kmod-fs-minix is not set
-# CONFIG_PACKAGE_kmod-fs-msdos is not set
-# CONFIG_PACKAGE_kmod-fs-nfs is not set
+CONFIG_PACKAGE_kmod-fs-f2fs=m
+CONFIG_PACKAGE_kmod-fs-fscache=m
+CONFIG_PACKAGE_kmod-fs-hfs=m
+CONFIG_PACKAGE_kmod-fs-hfsplus=m
+CONFIG_PACKAGE_kmod-fs-isofs=m
+CONFIG_PACKAGE_kmod-fs-jfs=m
+CONFIG_PACKAGE_kmod-fs-minix=m
+CONFIG_PACKAGE_kmod-fs-msdos=m
+CONFIG_PACKAGE_kmod-fs-nfs=m
 CONFIG_PACKAGE_kmod-fs-nfs-common=m
-# CONFIG_PACKAGE_kmod-fs-nfsd is not set
+CONFIG_PACKAGE_kmod-fs-nfsd=m
 CONFIG_PACKAGE_kmod-fs-ntfs=y
 CONFIG_PACKAGE_kmod-fs-reiserfs=y
-# CONFIG_PACKAGE_kmod-fs-udf is not set
+CONFIG_PACKAGE_kmod-fs-udf=m
 CONFIG_PACKAGE_kmod-fs-vfat=y
-# CONFIG_PACKAGE_kmod-fs-xfs is not set
+CONFIG_PACKAGE_kmod-fs-xfs=m
 CONFIG_PACKAGE_kmod-fuse=y
 
 #
 # FireWire support
 #
-# CONFIG_PACKAGE_kmod-firewire is not set
+CONFIG_PACKAGE_kmod-firewire=m
+CONFIG_PACKAGE_kmod-firewire-net=m
+CONFIG_PACKAGE_kmod-firewire-ohci=m
+CONFIG_PACKAGE_kmod-firewire-sbp2=m
 
 #
 # Hardware Monitoring Support
 #
-# CONFIG_PACKAGE_kmod-hwmon-core is not set
+CONFIG_PACKAGE_kmod-hwmon-core=m
+CONFIG_PACKAGE_kmod-hwmon-adt7410=m
+CONFIG_PACKAGE_kmod-hwmon-adt7475=m
+CONFIG_PACKAGE_kmod-hwmon-gpiofan=m
+CONFIG_PACKAGE_kmod-hwmon-gsc=m
+CONFIG_PACKAGE_kmod-hwmon-ina2xx=m
+CONFIG_PACKAGE_kmod-hwmon-lm63=m
+CONFIG_PACKAGE_kmod-hwmon-lm75=m
+CONFIG_PACKAGE_kmod-hwmon-lm77=m
+CONFIG_PACKAGE_kmod-hwmon-lm85=m
+CONFIG_PACKAGE_kmod-hwmon-lm90=m
+CONFIG_PACKAGE_kmod-hwmon-lm92=m
+CONFIG_PACKAGE_kmod-hwmon-lm95241=m
+CONFIG_PACKAGE_kmod-hwmon-pwmfan=m
+CONFIG_PACKAGE_kmod-hwmon-sht21=m
+CONFIG_PACKAGE_kmod-hwmon-tmp421=m
+CONFIG_PACKAGE_kmod-hwmon-vid=m
 
 #
 # I2C support
 #
-# CONFIG_PACKAGE_kmod-i2c-core is not set
-# CONFIG_PACKAGE_kmod-i2c-gpio-custom is not set
+CONFIG_PACKAGE_kmod-i2c-core=m
+CONFIG_PACKAGE_kmod-i2c-algo-bit=m
+CONFIG_PACKAGE_kmod-i2c-algo-pca=m
+CONFIG_PACKAGE_kmod-i2c-algo-pcf=m
+CONFIG_PACKAGE_kmod-i2c-gpio=m
+CONFIG_PACKAGE_kmod-i2c-gpio-custom=m
+CONFIG_PACKAGE_kmod-i2c-mux=m
+CONFIG_PACKAGE_kmod-i2c-mux-gpio=m
+CONFIG_PACKAGE_kmod-i2c-mux-pca9541=m
+CONFIG_PACKAGE_kmod-i2c-mux-pca954x=m
+CONFIG_PACKAGE_kmod-i2c-tiny-usb=m
 
 #
 # Input modules
@@ -2351,7 +2394,7 @@ CONFIG_PACKAGE_kmod-input-gpio-keys-polled=y
 CONFIG_PACKAGE_kmod-input-joydev=m
 CONFIG_PACKAGE_kmod-input-matrixkmap=m
 CONFIG_PACKAGE_kmod-input-polldev=y
-# CONFIG_PACKAGE_kmod-input-uinput is not set
+CONFIG_PACKAGE_kmod-input-uinput=m
 
 #
 # LED modules
@@ -2361,30 +2404,32 @@ CONFIG_PACKAGE_kmod-leds-gpio=y
 # CONFIG_PACKAGE_kmod-leds-rb750 is not set
 # CONFIG_PACKAGE_kmod-leds-wndr3700-usb is not set
 CONFIG_PACKAGE_kmod-ledtrig-default-on=y
-# CONFIG_PACKAGE_kmod-ledtrig-gpio is not set
-# CONFIG_PACKAGE_kmod-ledtrig-heartbeat is not set
-# CONFIG_PACKAGE_kmod-ledtrig-morse is not set
+CONFIG_PACKAGE_kmod-ledtrig-gpio=y
+CONFIG_PACKAGE_kmod-ledtrig-heartbeat=y
+CONFIG_PACKAGE_kmod-ledtrig-morse=y
 CONFIG_PACKAGE_kmod-ledtrig-netdev=y
-# CONFIG_PACKAGE_kmod-ledtrig-netfilter is not set
-# CONFIG_PACKAGE_kmod-ledtrig-oneshot is not set
+CONFIG_PACKAGE_kmod-ledtrig-netfilter=y
+CONFIG_PACKAGE_kmod-ledtrig-oneshot=y
 CONFIG_PACKAGE_kmod-ledtrig-timer=y
-# CONFIG_PACKAGE_kmod-ledtrig-transient is not set
-# CONFIG_PACKAGE_kmod-ledtrig-usbdev is not set
+CONFIG_PACKAGE_kmod-ledtrig-transient=y
+CONFIG_PACKAGE_kmod-ledtrig-usbdev=y
 
 #
 # Libraries
 #
 # CONFIG_PACKAGE_kmod-lib-cordic is not set
 CONFIG_PACKAGE_kmod-lib-crc-ccitt=y
-# CONFIG_PACKAGE_kmod-lib-crc-itu-t is not set
+CONFIG_PACKAGE_kmod-lib-crc-itu-t=m
 CONFIG_PACKAGE_kmod-lib-crc16=y
-# CONFIG_PACKAGE_kmod-lib-crc32c is not set
-# CONFIG_PACKAGE_kmod-lib-crc7 is not set
-# CONFIG_PACKAGE_kmod-lib-crc8 is not set
-# CONFIG_PACKAGE_kmod-lib-lz4 is not set
-# CONFIG_PACKAGE_kmod-lib-lzo is not set
-# CONFIG_PACKAGE_kmod-lib-textsearch is not set
-# CONFIG_PACKAGE_kmod-lib-zlib is not set
+CONFIG_PACKAGE_kmod-lib-crc32c=m
+CONFIG_PACKAGE_kmod-lib-crc7=m
+CONFIG_PACKAGE_kmod-lib-crc8=m
+CONFIG_PACKAGE_kmod-lib-lz4=m
+CONFIG_PACKAGE_kmod-lib-lzo=m
+CONFIG_PACKAGE_kmod-lib-raid6=m
+CONFIG_PACKAGE_kmod-lib-textsearch=m
+CONFIG_PACKAGE_kmod-lib-xor=m
+CONFIG_PACKAGE_kmod-lib-zlib=m
 
 #
 # Native Language Support
@@ -2420,27 +2465,28 @@ CONFIG_PACKAGE_kmod-ip6tables=y
 # CONFIG_PACKAGE_kmod-ipt-chaos is not set
 # CONFIG_PACKAGE_kmod-ipt-cluster is not set
 # CONFIG_PACKAGE_kmod-ipt-clusterip is not set
-# CONFIG_PACKAGE_kmod-ipt-compat-xtables is not set
+CONFIG_PACKAGE_kmod-ipt-compat-xtables=m
 # CONFIG_PACKAGE_kmod-ipt-condition is not set
 CONFIG_PACKAGE_kmod-ipt-conntrack=y
-# CONFIG_PACKAGE_kmod-ipt-conntrack-extra is not set
+CONFIG_PACKAGE_kmod-ipt-conntrack-extra=m
+CONFIG_PACKAGE_kmod-ipt-coova=m
 CONFIG_PACKAGE_kmod-ipt-core=y
 # CONFIG_PACKAGE_kmod-ipt-debug is not set
 # CONFIG_PACKAGE_kmod-ipt-delude is not set
 # CONFIG_PACKAGE_kmod-ipt-dhcpmac is not set
 # CONFIG_PACKAGE_kmod-ipt-dnetmap is not set
-# CONFIG_PACKAGE_kmod-ipt-extra is not set
-# CONFIG_PACKAGE_kmod-ipt-filter is not set
+CONFIG_PACKAGE_kmod-ipt-extra=m
+CONFIG_PACKAGE_kmod-ipt-filter=m
 # CONFIG_PACKAGE_kmod-ipt-fuzzy is not set
 # CONFIG_PACKAGE_kmod-ipt-geoip is not set
 # CONFIG_PACKAGE_kmod-ipt-hashlimit is not set
 # CONFIG_PACKAGE_kmod-ipt-iface is not set
 # CONFIG_PACKAGE_kmod-ipt-ipmark is not set
-# CONFIG_PACKAGE_kmod-ipt-ipopt is not set
-# CONFIG_PACKAGE_kmod-ipt-ipp2p is not set
+CONFIG_PACKAGE_kmod-ipt-ipopt=m
+CONFIG_PACKAGE_kmod-ipt-ipp2p=m
 # CONFIG_PACKAGE_kmod-ipt-iprange is not set
-# CONFIG_PACKAGE_kmod-ipt-ipsec is not set
-# CONFIG_PACKAGE_kmod-ipt-ipset is not set
+CONFIG_PACKAGE_kmod-ipt-ipsec=m
+CONFIG_PACKAGE_kmod-ipt-ipset=m
 # CONFIG_PACKAGE_kmod-ipt-ipv4options is not set
 # CONFIG_PACKAGE_kmod-ipt-led is not set
 # CONFIG_PACKAGE_kmod-ipt-length2 is not set
@@ -2448,7 +2494,7 @@ CONFIG_PACKAGE_kmod-ipt-core=y
 # CONFIG_PACKAGE_kmod-ipt-lscan is not set
 # CONFIG_PACKAGE_kmod-ipt-lua is not set
 CONFIG_PACKAGE_kmod-ipt-nat=y
-# CONFIG_PACKAGE_kmod-ipt-nat-extra is not set
+CONFIG_PACKAGE_kmod-ipt-nat-extra=m
 # CONFIG_PACKAGE_kmod-ipt-nat6 is not set
 # CONFIG_PACKAGE_kmod-ipt-nathelper-rtsp is not set
 # CONFIG_PACKAGE_kmod-ipt-nflog is not set
@@ -2462,7 +2508,7 @@ CONFIG_PACKAGE_kmod-ipt-nat=y
 # CONFIG_PACKAGE_kmod-ipt-u32 is not set
 # CONFIG_PACKAGE_kmod-ipt-ulog is not set
 CONFIG_PACKAGE_kmod-nf-conntrack=y
-# CONFIG_PACKAGE_kmod-nf-conntrack-netlink is not set
+CONFIG_PACKAGE_kmod-nf-conntrack-netlink=m
 CONFIG_PACKAGE_kmod-nf-conntrack6=y
 CONFIG_PACKAGE_kmod-nf-ipt=y
 CONFIG_PACKAGE_kmod-nf-ipt6=y
@@ -2470,8 +2516,8 @@ CONFIG_PACKAGE_kmod-nf-nat=y
 # CONFIG_PACKAGE_kmod-nf-nat6 is not set
 CONFIG_PACKAGE_kmod-nf-nathelper=y
 # CONFIG_PACKAGE_kmod-nf-nathelper-extra is not set
-# CONFIG_PACKAGE_kmod-nfnetlink is not set
-# CONFIG_PACKAGE_kmod-nfnetlink-log is not set
+CONFIG_PACKAGE_kmod-nfnetlink=m
+CONFIG_PACKAGE_kmod-nfnetlink-log=m
 # CONFIG_PACKAGE_kmod-nfnetlink-queue is not set
 # CONFIG_PACKAGE_kmod-nft-core is not set
 # CONFIG_PACKAGE_kmod-nft-nat is not set
@@ -2497,7 +2543,8 @@ CONFIG_PACKAGE_kmod-nf-nathelper=y
 # CONFIG_PACKAGE_kmod-gigaset is not set
 # CONFIG_PACKAGE_kmod-hfcmulti is not set
 # CONFIG_PACKAGE_kmod-hfcpci is not set
-# CONFIG_PACKAGE_kmod-ifb is not set
+CONFIG_PACKAGE_kmod-ifb=m
+CONFIG_PACKAGE_kmod-igb=m
 CONFIG_PACKAGE_kmod-libphy=m
 # CONFIG_PACKAGE_kmod-macvlan is not set
 CONFIG_PACKAGE_kmod-mii=m
@@ -2508,7 +2555,7 @@ CONFIG_PACKAGE_kmod-mii=m
 # CONFIG_PACKAGE_kmod-phy-broadcom is not set
 # CONFIG_PACKAGE_kmod-r6040 is not set
 # CONFIG_PACKAGE_kmod-r8169 is not set
-# CONFIG_PACKAGE_kmod-siit is not set
+CONFIG_PACKAGE_kmod-siit=m
 # CONFIG_PACKAGE_kmod-sis190 is not set
 # CONFIG_PACKAGE_kmod-sis900 is not set
 # CONFIG_PACKAGE_kmod-skge is not set
@@ -2534,88 +2581,108 @@ CONFIG_PACKAGE_kmod-mii=m
 CONFIG_PACKAGE_kmod-atm=y
 # CONFIG_PACKAGE_kmod-atmtcp is not set
 # CONFIG_PACKAGE_kmod-ax25 is not set
-# CONFIG_PACKAGE_kmod-batman-adv is not set
+CONFIG_PACKAGE_kmod-batman-adv=m
+# CONFIG_KMOD_BATMAN_ADV_DEBUG_LOG is not set
+CONFIG_KMOD_BATMAN_ADV_BLA=y
+CONFIG_KMOD_BATMAN_ADV_DAT=y
+CONFIG_KMOD_BATMAN_ADV_MCAST=y
+# CONFIG_KMOD_BATMAN_ADV_NC is not set
 # CONFIG_PACKAGE_kmod-bonding is not set
-# CONFIG_PACKAGE_kmod-bridge is not set
+CONFIG_PACKAGE_kmod-bridge=m
 # CONFIG_PACKAGE_kmod-capi is not set
-# CONFIG_PACKAGE_kmod-dnsresolver is not set
-# CONFIG_PACKAGE_kmod-gre is not set
+CONFIG_PACKAGE_kmod-dnsresolver=m
+CONFIG_PACKAGE_kmod-gre=m
 # CONFIG_PACKAGE_kmod-gre6 is not set
-# CONFIG_PACKAGE_kmod-ip6-tunnel is not set
-# CONFIG_PACKAGE_kmod-ipip is not set
+CONFIG_PACKAGE_kmod-ip6-tunnel=m
+CONFIG_PACKAGE_kmod-ipip=m
 # CONFIG_PACKAGE_kmod-ipoa is not set
-# CONFIG_PACKAGE_kmod-ipsec is not set
-# CONFIG_PACKAGE_kmod-iptunnel6 is not set
+CONFIG_PACKAGE_kmod-ipsec=m
+CONFIG_PACKAGE_kmod-ipsec4=m
+CONFIG_PACKAGE_kmod-ipsec6=m
+CONFIG_PACKAGE_kmod-iptunnel=m
+CONFIG_PACKAGE_kmod-iptunnel4=m
+CONFIG_PACKAGE_kmod-iptunnel6=m
 CONFIG_PACKAGE_kmod-ipv6=y
+CONFIG_PACKAGE_kmod-ipvti=m
 # CONFIG_PACKAGE_kmod-isdn4linux is not set
-# CONFIG_PACKAGE_kmod-l2tp is not set
+CONFIG_PACKAGE_kmod-l2tp=m
 # CONFIG_PACKAGE_kmod-l2tp-eth is not set
 # CONFIG_PACKAGE_kmod-l2tp-ip is not set
-# CONFIG_PACKAGE_kmod-llc is not set
+CONFIG_PACKAGE_kmod-llc=m
 # CONFIG_PACKAGE_kmod-misdn is not set
-# CONFIG_PACKAGE_kmod-nat46 is not set
+CONFIG_PACKAGE_kmod-nat46=m
 # CONFIG_PACKAGE_kmod-netem is not set
-# CONFIG_PACKAGE_kmod-openvswitch is not set
+CONFIG_PACKAGE_kmod-openvswitch=m
 # CONFIG_PACKAGE_kmod-pktgen is not set
 CONFIG_PACKAGE_kmod-ppp=y
-# CONFIG_PACKAGE_kmod-mppe is not set
+CONFIG_PACKAGE_kmod-mppe=m
 # CONFIG_PACKAGE_kmod-ppp-synctty is not set
 # CONFIG_PACKAGE_kmod-pppoa is not set
 CONFIG_PACKAGE_kmod-pppoe=y
-# CONFIG_PACKAGE_kmod-pppol2tp is not set
+CONFIG_PACKAGE_kmod-pppol2tp=m
 CONFIG_PACKAGE_kmod-pppox=y
 # CONFIG_PACKAGE_kmod-pptp is not set
-# CONFIG_PACKAGE_kmod-sched is not set
-# CONFIG_PACKAGE_kmod-sched-connmark is not set
-# CONFIG_PACKAGE_kmod-sched-core is not set
+CONFIG_PACKAGE_kmod-rxrpc=m
+CONFIG_PACKAGE_kmod-sched=m
+CONFIG_PACKAGE_kmod-sched-connmark=m
+CONFIG_PACKAGE_kmod-sched-core=m
 # CONFIG_PACKAGE_kmod-sched-esfq is not set
-# CONFIG_PACKAGE_kmod-sctp is not set
-# CONFIG_PACKAGE_kmod-sit is not set
+CONFIG_PACKAGE_kmod-sctp=m
+CONFIG_PACKAGE_kmod-sit=m
 CONFIG_PACKAGE_kmod-slhc=y
 # CONFIG_PACKAGE_kmod-slip is not set
-# CONFIG_PACKAGE_kmod-stp is not set
+CONFIG_PACKAGE_kmod-stp=m
 # CONFIG_PACKAGE_kmod-trelay is not set
-# CONFIG_PACKAGE_kmod-tun is not set
-# CONFIG_PACKAGE_kmod-udptunnel4 is not set
-# CONFIG_PACKAGE_kmod-udptunnel6 is not set
+CONFIG_PACKAGE_kmod-tun=m
+CONFIG_PACKAGE_kmod-udptunnel4=m
+CONFIG_PACKAGE_kmod-udptunnel6=m
 # CONFIG_PACKAGE_kmod-veth is not set
-# CONFIG_PACKAGE_kmod-vxlan is not set
+CONFIG_PACKAGE_kmod-vxlan=m
 
 #
 # Other modules
 #
-# CONFIG_PACKAGE_kmod-6lowpan is not set
+CONFIG_PACKAGE_kmod-6lowpan=m
 # CONFIG_PACKAGE_kmod-bcma is not set
-# CONFIG_PACKAGE_kmod-bluetooth is not set
-# CONFIG_PACKAGE_kmod-bluetooth_6lowpan is not set
-# CONFIG_PACKAGE_kmod-button-hotplug is not set
-# CONFIG_PACKAGE_kmod-echo is not set
-# CONFIG_PACKAGE_kmod-eeprom-93cx6 is not set
-# CONFIG_PACKAGE_kmod-eeprom-at24 is not set
-# CONFIG_PACKAGE_kmod-eeprom-at25 is not set
-# CONFIG_PACKAGE_kmod-gpio-beeper is not set
-# CONFIG_PACKAGE_kmod-gpio-button-hotplug is not set
-# CONFIG_PACKAGE_kmod-gpio-dev is not set
-# CONFIG_PACKAGE_kmod-gpio-mcp23s08 is not set
-# CONFIG_PACKAGE_kmod-gpio-nxp-74hc164 is not set
-# CONFIG_PACKAGE_kmod-gpio-pca953x is not set
-# CONFIG_PACKAGE_kmod-gpio-pcf857x is not set
-# CONFIG_PACKAGE_kmod-iio-core is not set
+CONFIG_PACKAGE_kmod-bluetooth=m
+CONFIG_PACKAGE_kmod-bluetooth_6lowpan=m
+CONFIG_PACKAGE_kmod-button-hotplug=m
+CONFIG_PACKAGE_kmod-echo=m
+CONFIG_PACKAGE_kmod-eeprom-93cx6=m
+CONFIG_PACKAGE_kmod-eeprom-at24=m
+CONFIG_PACKAGE_kmod-eeprom-at25=m
+CONFIG_PACKAGE_kmod-gpio-beeper=m
+CONFIG_PACKAGE_kmod-gpio-button-hotplug=m
+CONFIG_PACKAGE_kmod-gpio-dev=m
+CONFIG_PACKAGE_kmod-gpio-mcp23s08=m
+CONFIG_PACKAGE_kmod-gpio-nxp-74hc164=m
+CONFIG_PACKAGE_kmod-gpio-pca953x=m
+CONFIG_PACKAGE_kmod-gpio-pcf857x=m
+CONFIG_PACKAGE_kmod-iio-core=m
+CONFIG_PACKAGE_kmod-iio-ad799x=m
 # CONFIG_PACKAGE_kmod-ikconfig is not set
-# CONFIG_PACKAGE_kmod-mmc is not set
-# CONFIG_PACKAGE_kmod-mmc-over-gpio is not set
+CONFIG_PACKAGE_kmod-mmc=m
+CONFIG_PACKAGE_kmod-mmc-over-gpio=m
+
+#
+# Configuration
+#
+CONFIG_KMOD_MMC_OVER_GPIO_DI_PIN=1
+CONFIG_KMOD_MMC_OVER_GPIO_DO_PIN=3
+CONFIG_KMOD_MMC_OVER_GPIO_CLK_PIN=4
+CONFIG_KMOD_MMC_OVER_GPIO_CS_PIN=7
 # CONFIG_PACKAGE_kmod-mtdtests is not set
-# CONFIG_PACKAGE_kmod-pps is not set
+CONFIG_PACKAGE_kmod-pps=m
 # CONFIG_PACKAGE_kmod-pps-gpio is not set
-# CONFIG_PACKAGE_kmod-ptp is not set
+CONFIG_PACKAGE_kmod-ptp=m
 # CONFIG_PACKAGE_kmod-random-core is not set
-# CONFIG_PACKAGE_kmod-regmap is not set
-# CONFIG_PACKAGE_kmod-rotary-gpio-custom is not set
-# CONFIG_PACKAGE_kmod-sdhci is not set
+CONFIG_PACKAGE_kmod-regmap=m
+CONFIG_PACKAGE_kmod-rotary-gpio-custom=m
+CONFIG_PACKAGE_kmod-sdhci=m
 # CONFIG_PACKAGE_kmod-serial-8250 is not set
-# CONFIG_PACKAGE_kmod-softdog is not set
+CONFIG_PACKAGE_kmod-softdog=m
 # CONFIG_PACKAGE_kmod-ssb is not set
-# CONFIG_PACKAGE_kmod-zram is not set
+CONFIG_PACKAGE_kmod-zram=m
 
 #
 # PCMCIA support
@@ -2624,18 +2691,24 @@ CONFIG_PACKAGE_kmod-slhc=y
 #
 # SPI Support
 #
-# CONFIG_PACKAGE_kmod-mmc-spi is not set
-# CONFIG_PACKAGE_kmod-spi-bitbang is not set
-# CONFIG_PACKAGE_kmod-spi-dev is not set
-# CONFIG_PACKAGE_kmod-spi-gpio is not set
-# CONFIG_PACKAGE_kmod-spi-gpio-custom is not set
-# CONFIG_PACKAGE_kmod-spi-gpio-old is not set
+CONFIG_PACKAGE_kmod-mmc-spi=m
+CONFIG_PACKAGE_kmod-spi-bitbang=m
+CONFIG_PACKAGE_kmod-spi-dev=m
+CONFIG_PACKAGE_kmod-spi-gpio=m
+CONFIG_PACKAGE_kmod-spi-gpio-custom=m
+CONFIG_PACKAGE_kmod-spi-gpio-old=m
 # CONFIG_PACKAGE_kmod-spi-vsc7385 is not set
 
 #
 # Sound Support
 #
-# CONFIG_PACKAGE_kmod-sound-core is not set
+CONFIG_PACKAGE_kmod-sound-core=m
+CONFIG_PACKAGE_kmod-ac97=m
+CONFIG_PACKAGE_kmod-sound-i8x0=m
+CONFIG_PACKAGE_kmod-sound-seq=m
+CONFIG_PACKAGE_kmod-sound-soc-ac97=m
+CONFIG_PACKAGE_kmod-sound-soc-core=m
+CONFIG_PACKAGE_kmod-usb-audio=m
 
 #
 # USB Support
@@ -2652,7 +2725,7 @@ CONFIG_PACKAGE_kmod-usb-dwc2=m
 CONFIG_PACKAGE_kmod-usb-hid=m
 CONFIG_PACKAGE_kmod-usb-net=m
 CONFIG_PACKAGE_kmod-usb-net-asix=m
-# CONFIG_PACKAGE_kmod-usb-net-asix-ax88179 is not set
+CONFIG_PACKAGE_kmod-usb-net-asix-ax88179=m
 CONFIG_PACKAGE_kmod-usb-net-cdc-eem=m
 CONFIG_PACKAGE_kmod-usb-net-cdc-ether=m
 CONFIG_PACKAGE_kmod-usb-net-cdc-mbim=m
@@ -2679,7 +2752,7 @@ CONFIG_PACKAGE_kmod-usb-serial-belkin=m
 CONFIG_PACKAGE_kmod-usb-serial-ch341=m
 CONFIG_PACKAGE_kmod-usb-serial-cp210x=m
 CONFIG_PACKAGE_kmod-usb-serial-cypress-m8=m
-# CONFIG_PACKAGE_kmod-usb-serial-dmx_usb_module is not set
+CONFIG_PACKAGE_kmod-usb-serial-dmx_usb_module=m
 CONFIG_PACKAGE_kmod-usb-serial-ftdi=m
 # CONFIG_PACKAGE_kmod-usb-serial-garmin is not set
 CONFIG_PACKAGE_kmod-usb-serial-ipw=m
@@ -2702,7 +2775,7 @@ CONFIG_PACKAGE_kmod-usb-wdm=m
 CONFIG_PACKAGE_kmod-usb-yealink=m
 CONFIG_PACKAGE_kmod-usb2=y
 CONFIG_PACKAGE_kmod-usb2-pci=m
-# CONFIG_PACKAGE_kmod-usb3 is not set
+CONFIG_PACKAGE_kmod-usb3=m
 CONFIG_PACKAGE_kmod-usbip=m
 CONFIG_PACKAGE_kmod-usbip-client=m
 CONFIG_PACKAGE_kmod-usbip-server=m
@@ -2711,7 +2784,45 @@ CONFIG_PACKAGE_kmod-usbmon=m
 #
 # Video Support
 #
-# CONFIG_PACKAGE_kmod-video-core is not set
+CONFIG_PACKAGE_kmod-video-core=m
+CONFIG_PACKAGE_kmod-video-cpia2=m
+CONFIG_PACKAGE_kmod-video-gspca-core=m
+CONFIG_PACKAGE_kmod-video-gspca-conex=m
+CONFIG_PACKAGE_kmod-video-gspca-etoms=m
+CONFIG_PACKAGE_kmod-video-gspca-finepix=m
+CONFIG_PACKAGE_kmod-video-gspca-gl860=m
+CONFIG_PACKAGE_kmod-video-gspca-jeilinj=m
+CONFIG_PACKAGE_kmod-video-gspca-konica=m
+CONFIG_PACKAGE_kmod-video-gspca-m5602=m
+CONFIG_PACKAGE_kmod-video-gspca-mars=m
+CONFIG_PACKAGE_kmod-video-gspca-mr97310a=m
+CONFIG_PACKAGE_kmod-video-gspca-ov519=m
+CONFIG_PACKAGE_kmod-video-gspca-ov534=m
+CONFIG_PACKAGE_kmod-video-gspca-ov534-9=m
+CONFIG_PACKAGE_kmod-video-gspca-pac207=m
+CONFIG_PACKAGE_kmod-video-gspca-pac7311=m
+CONFIG_PACKAGE_kmod-video-gspca-se401=m
+CONFIG_PACKAGE_kmod-video-gspca-sn9c20x=m
+CONFIG_PACKAGE_kmod-video-gspca-sonixb=m
+CONFIG_PACKAGE_kmod-video-gspca-sonixj=m
+CONFIG_PACKAGE_kmod-video-gspca-spca500=m
+CONFIG_PACKAGE_kmod-video-gspca-spca501=m
+CONFIG_PACKAGE_kmod-video-gspca-spca505=m
+CONFIG_PACKAGE_kmod-video-gspca-spca506=m
+CONFIG_PACKAGE_kmod-video-gspca-spca508=m
+CONFIG_PACKAGE_kmod-video-gspca-spca561=m
+CONFIG_PACKAGE_kmod-video-gspca-sq905=m
+CONFIG_PACKAGE_kmod-video-gspca-sq905c=m
+CONFIG_PACKAGE_kmod-video-gspca-stk014=m
+CONFIG_PACKAGE_kmod-video-gspca-stv06xx=m
+CONFIG_PACKAGE_kmod-video-gspca-sunplus=m
+CONFIG_PACKAGE_kmod-video-gspca-t613=m
+CONFIG_PACKAGE_kmod-video-gspca-tv8532=m
+CONFIG_PACKAGE_kmod-video-gspca-vc032x=m
+CONFIG_PACKAGE_kmod-video-gspca-zc3xx=m
+CONFIG_PACKAGE_kmod-video-pwc=m
+CONFIG_PACKAGE_kmod-video-uvc=m
+CONFIG_PACKAGE_kmod-video-videobuf2=m
 
 #
 # Virtualization Support
@@ -2720,12 +2831,25 @@ CONFIG_PACKAGE_kmod-usbmon=m
 #
 # Voice over IP
 #
-# CONFIG_PACKAGE_kmod-dahdi is not set
+CONFIG_PACKAGE_kmod-dahdi=m
+CONFIG_PACKAGE_kmod-dahdi-dummy=m
+CONFIG_PACKAGE_kmod-dahdi-echocan-oslec=m
+CONFIG_PACKAGE_kmod-dahdi-hfcs=m
 
 #
 # W1 support
 #
-# CONFIG_PACKAGE_kmod-w1 is not set
+CONFIG_PACKAGE_kmod-w1=m
+CONFIG_PACKAGE_kmod-w1-gpio-custom=m
+CONFIG_PACKAGE_kmod-w1-master-ds2482=m
+CONFIG_PACKAGE_kmod-w1-master-ds2490=m
+CONFIG_PACKAGE_kmod-w1-master-gpio=m
+CONFIG_PACKAGE_kmod-w1-slave-ds2413=m
+CONFIG_PACKAGE_kmod-w1-slave-ds2431=m
+CONFIG_PACKAGE_kmod-w1-slave-ds2433=m
+CONFIG_PACKAGE_kmod-w1-slave-ds2760=m
+CONFIG_PACKAGE_kmod-w1-slave-smem=m
+CONFIG_PACKAGE_kmod-w1-slave-therm=m
 
 #
 # Wireless Drivers
@@ -2790,6 +2914,7 @@ CONFIG_PACKAGE_MAC80211_MESH=y
 # CONFIG_PACKAGE_kmod-rtl8192de is not set
 # CONFIG_PACKAGE_kmod-rtl8192se is not set
 # CONFIG_PACKAGE_kmod-zd1211rw is not set
+CONFIG_PACKAGE_kmod-dma-buf=m
 
 #
 # Languages
