@@ -4429,7 +4429,7 @@ CONFIG_PACKAGE_wpad-mini=y
 # Editors
 #
 # CONFIG_PACKAGE_joe is not set
-CONFIG_PACKAGE_nano=y
+# CONFIG_PACKAGE_nano is not set
 # CONFIG_PACKAGE_vim is not set
 # CONFIG_PACKAGE_vim-full is not set
 # CONFIG_PACKAGE_vim-help is not set
