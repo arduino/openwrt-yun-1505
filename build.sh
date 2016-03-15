@@ -30,14 +30,17 @@ done
 
 if [ x$CLEAN == x1 ]; then
 make clean
+
 ./scripts/feeds uninstall -a
 ./scripts/feeds update -a
-./scripts/feeds install -a -d m
-
-./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
 
 rm -rf ./package/feeds/packages/rng-tools
 rm -rf ./package/feeds/packages/avrdude
+
+./scripts/feeds install -a
+
+./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
+
 fi
 
 if [ x$COMPILEALL == x1 ]; then
