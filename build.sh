@@ -28,7 +28,7 @@ while getopts 'acshj:' flag; do
         esac
 done
 
-if [ x$CLEAN == x1 ]; then
+if [ x$CLEAN == x1 ] || [ ! -f .config ]; then
 make clean
 
 ./scripts/feeds uninstall -a
