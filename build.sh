@@ -45,6 +45,11 @@ fi
 
 ./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
 
+rm -rf ./package/feeds/packages/rng-tools
+rm -rf ./package/feeds/packages/avrdude
+ln -s ../../../feeds/arduino/rng-tools ./package/feeds/arduino/rng-tools
+ln -s ../../../feeds/arduino/avrdude ./package/feeds/arduino/avrdude
+
 if [ x$COMPILEALL == x1 ]; then
 cp config.full .config
 else
