@@ -42,8 +42,6 @@ make clean
 
 rm -rf ./package/feeds/packages/rng-tools
 rm -rf ./package/feeds/packages/avrdude
-ln -s ../../../feeds/arduino/rng-tools ./package/feeds/arduino/rng-tools
-ln -s ../../../feeds/arduino/avrdude ./package/feeds/arduino/avrdude
 fi
 
 if [ x$COMPILEALL == x1 ]; then
