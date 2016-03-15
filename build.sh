@@ -29,7 +29,6 @@ while getopts 'acshj:' flag; do
 done
 
 if [ x$CLEAN == x1 ] || [ ! -f .config ]; then
-make clean
 
 ./scripts/feeds uninstall -a
 ./scripts/feeds update -a
@@ -40,6 +39,8 @@ rm -rf ./package/feeds/packages/avrdude
 ./scripts/feeds install -a
 
 ./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
+
+make clean
 
 fi
 
