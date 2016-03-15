@@ -39,16 +39,17 @@ if [ x$CLEAN == x1 ]; then
 make clean
 fi
 
+./scripts/feeds uninstall -a
+./scripts/feeds update -a
+./scripts/feeds install -a -d m
+
+./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
+
 if [ x$COMPILEALL == x1 ]; then
 cp config.full .config
 else
 cp config.default .config
 fi
-
-./scripts/feeds uninstall -a
-./scripts/feeds install -a -d m
-
-./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
 
 make oldconfig
 

@@ -306,8 +306,8 @@ CONFIG_KERNEL_DEBUG_FS=y
 # CONFIG_KERNEL_DEBUG_INFO is not set
 # CONFIG_KERNEL_DYNAMIC_DEBUG is not set
 # CONFIG_KERNEL_KPROBES is not set
-# CONFIG_KERNEL_AIO is not set
-# CONFIG_KERNEL_DIRECT_IO is not set
+CONFIG_KERNEL_AIO=y
+CONFIG_KERNEL_DIRECT_IO=y
 # CONFIG_KERNEL_FHANDLE is not set
 # CONFIG_KERNEL_FANOTIFY is not set
 # CONFIG_KERNEL_BLK_DEV_BSG is not set
@@ -434,7 +434,9 @@ CONFIG_FEED_management=y
 CONFIG_FEED_arduino=y
 CONFIG_FEED_custom=y
 CONFIG_FEED_owrt_pub_feeds=y
-# CONFIG_SMIMEOPT is not set
+CONFIG_SMIMEOPT=y
+CONFIG_OPKGSMIME_CERT="/home/admin/openwrtyun-gpg-signing-keys/7F294291.crt"
+CONFIG_OPKGSMIME_KEY="/home/admin/openwrtyun-gpg-signing-keys/7F294291_key.pem"
 CONFIG_OPKGSMIME_PASSPHRASE=y
 
 #
