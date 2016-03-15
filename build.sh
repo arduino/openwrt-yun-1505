@@ -28,10 +28,6 @@ while getopts 'acshj:' flag; do
         esac
 done
 
-echo $CLEAN
-echo $JOBS $EXTRAFLAGS
-exit 1
-
 if [ x$CLEAN == x1 ]; then
 make clean
 ./scripts/feeds uninstall -a
