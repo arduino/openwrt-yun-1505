@@ -32,11 +32,10 @@ if [ x$CLEAN == x1 ] || [ ! -f .config ]; then
 
 ./scripts/feeds uninstall -a
 ./scripts/feeds update -a
+./scripts/feeds install -a
 
 rm -rf ./package/feeds/packages/rng-tools
 rm -rf ./package/feeds/packages/avrdude
-
-./scripts/feeds install -a
 
 ./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
 
