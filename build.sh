@@ -36,6 +36,8 @@ if [ x$CLEAN == x1 ] || [ ! -f .config ]; then
 
 rm -rf ./package/feeds/packages/rng-tools
 rm -rf ./package/feeds/packages/avrdude
+ln -s $PWD/feeds/arduino/avrdude/ package/feeds/arduino/avrdude
+ln -s $PWD/feeds/arduino/rng-tools package/feeds/arduino/rng-tools
 
 ./scripts/feeds uninstall  libfreecwmp libmicroxml sslh libesmtp luajit tracertools pcre linknx vala
 
