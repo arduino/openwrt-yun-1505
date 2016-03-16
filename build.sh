@@ -45,6 +45,8 @@ make clean
 
 fi
 
+cp ~/openwrtyun-gpg-signing-keys/key-build* .
+
 if [ x$COMPILEALL == x1 ]; then
 cp config.full .config
 else
