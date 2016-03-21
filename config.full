@@ -7072,6 +7072,7 @@ CONFIG_MOSQUITTO_PASSWD=y
 CONFIG_PACKAGE_mosquitto-client=m
 CONFIG_PACKAGE_mosquitto-client-nossl=m
 CONFIG_PACKAGE_mosquitto-nossl=m
+CONFIG_PACKAGE_mqttcollect=m
 CONFIG_PACKAGE_mrd6=m
 CONFIG_PACKAGE_mtr=m
 CONFIG_PACKAGE_ndppd=m
