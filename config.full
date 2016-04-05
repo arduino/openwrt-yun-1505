@@ -434,6 +434,7 @@ CONFIG_FEED_management=y
 CONFIG_FEED_arduino=y
 CONFIG_FEED_custom=y
 CONFIG_FEED_owrt_pub_feeds=y
+CONFIG_FEED_juci=y
 CONFIG_SMIMEOPT=y
 CONFIG_OPKGSMIME_CERT="/home/admin/openwrtyun-gpg-signing-keys/7F294291.crt"
 CONFIG_OPKGSMIME_KEY="/home/admin/openwrtyun-gpg-signing-keys/7F294291_key.pem"
@@ -2164,7 +2165,28 @@ CONFIG_PACKAGE_ubox=y
 CONFIG_PACKAGE_ubus=y
 CONFIG_PACKAGE_ubusd=y
 CONFIG_PACKAGE_uci=y
-# CONFIG_PACKAGE_udev is not set
+CONFIG_PACKAGE_udev=m
+
+#
+# Configuration
+#
+# CONFIG_UDEV_DISABLE_LOGGING is not set
+# CONFIG_UDEV_ENABLE_DEBUG is not set
+CONFIG_UDEV_EXTRA_accelerometer=y
+CONFIG_UDEV_EXTRA_ata_id=y
+CONFIG_UDEV_EXTRA_cdrom_id=y
+# CONFIG_UDEV_EXTRA_collect is not set
+# CONFIG_UDEV_EXTRA_edd_id is not set
+# CONFIG_UDEV_EXTRA_firmware is not set
+# CONFIG_UDEV_EXTRA_floppy is not set
+CONFIG_UDEV_EXTRA_input_id=y
+CONFIG_UDEV_EXTRA_mtd_probe=y
+CONFIG_UDEV_EXTRA_path_id=y
+CONFIG_UDEV_EXTRA_qemu=y
+CONFIG_UDEV_EXTRA_rule_generator=y
+CONFIG_UDEV_EXTRA_scsi_id=y
+CONFIG_UDEV_EXTRA_usb_id=y
+CONFIG_UDEV_EXTRA_v4l_id=y
 CONFIG_PACKAGE_usign=y
 CONFIG_PACKAGE_wireless-tools=m
 CONFIG_PACKAGE_yun-conf=y
@@ -2306,6 +2328,90 @@ CONFIG_PACKAGE_sane-xerox_mfp=m
 #
 # CONFIG_PACKAGE_r8169-firmware is not set
 # CONFIG_PACKAGE_r8188eu-firmware is not set
+
+#
+# JUCI
+#
+
+#
+# C-backend
+#
+CONFIG_PACKAGE_juci-ubus-core=m
+# CONFIG_JUCI_UBUS_CORE is not set
+
+#
+# Plugins
+#
+CONFIG_PACKAGE_juci-asterisk=m
+# CONFIG_JUCI_ASTERISK is not set
+CONFIG_PACKAGE_juci-broadcom-dsl=m
+# CONFIG_JUCI_BROADCOM_DSL is not set
+CONFIG_PACKAGE_juci-broadcom-ethernet=m
+# CONFIG_JUCI_BROADCOM_ETHERNET is not set
+CONFIG_PACKAGE_juci-broadcom-vlan=m
+# CONFIG_JUCI_BROADCOM_VLAN is not set
+CONFIG_PACKAGE_juci-broadcom-wl=m
+# CONFIG_JUCI_BROADCOM_WL is not set
+CONFIG_PACKAGE_juci-ddns=m
+# CONFIG_JUCI_DDNS is not set
+CONFIG_PACKAGE_juci-diagnostics=m
+# CONFIG_JUCI_DIAGNOSTICS is not set
+CONFIG_PACKAGE_juci-dnsmasq-dhcp=m
+# CONFIG_JUCI_DNSMASQ_DHCP is not set
+CONFIG_PACKAGE_juci-dropbear=m
+# CONFIG_JUCI_DROPBEAR is not set
+CONFIG_PACKAGE_juci-ethernet=m
+# CONFIG_JUCI_ETHERNET is not set
+CONFIG_PACKAGE_juci-event=m
+# CONFIG_JUCI_EVENT is not set
+CONFIG_PACKAGE_juci-firewall-fw3=m
+# CONFIG_JUCI_FIREWALL_FW3 is not set
+CONFIG_PACKAGE_juci-freecwmp=m
+# CONFIG_JUCI_FREECWMP is not set
+CONFIG_PACKAGE_juci-igmpinfo=m
+# CONFIG_JUCI_IGMPINFO is not set
+CONFIG_PACKAGE_juci-inteno-multiwan=m
+# CONFIG_JUCI_INTENO_MULTIWAN is not set
+CONFIG_PACKAGE_juci-inteno-router=m
+# CONFIG_JUCI_INTENO_ROUTER is not set
+CONFIG_PACKAGE_juci-jquery-console=m
+# CONFIG_JUCI_JQUERY_CONSOLE is not set
+CONFIG_PACKAGE_juci-macdb=m
+# CONFIG_JUCI_MACDB is not set
+CONFIG_PACKAGE_juci-minidlna=m
+# CONFIG_JUCI_MINIDLNA is not set
+CONFIG_PACKAGE_juci-mod-status=m
+# CONFIG_JUCI_MOD_STATUS is not set
+CONFIG_PACKAGE_juci-mod-system=m
+# CONFIG_JUCI_MOD_SYSTEM is not set
+CONFIG_PACKAGE_juci-natalie-dect=m
+# CONFIG_JUCI_NATALIE_DECT is not set
+CONFIG_PACKAGE_juci-netmode=m
+# CONFIG_JUCI_NETMODE is not set
+CONFIG_PACKAGE_juci-network-netifd=m
+# CONFIG_JUCI_NETWORK_NETIFD is not set
+CONFIG_PACKAGE_juci-openwrt-wireless=m
+# CONFIG_JUCI_OPENWRT_WIRELESS is not set
+CONFIG_PACKAGE_juci-router-openwrt=m
+# CONFIG_JUCI_ROUTER_OPENWRT is not set
+CONFIG_PACKAGE_juci-samba=m
+# CONFIG_JUCI_SAMBA is not set
+CONFIG_PACKAGE_juci-snmp=m
+# CONFIG_JUCI_SNMP is not set
+CONFIG_PACKAGE_juci-sysupgrade=m
+# CONFIG_JUCI_SYSUPGRADE is not set
+CONFIG_PACKAGE_juci-upnp=m
+# CONFIG_JUCI_UPNP is not set
+CONFIG_PACKAGE_juci-usb=m
+# CONFIG_JUCI_USB is not set
+
+#
+# Themes
+#
+CONFIG_PACKAGE_juci-theme-inteno=m
+# CONFIG_JUCI_THEME_INTENO is not set
+CONFIG_PACKAGE_juci=m
+# CONFIG_JUCI_THEME_SELECTED is not set
 
 #
 # Kernel modules
@@ -3059,6 +3165,7 @@ CONFIG_PACKAGE_lualanes=m
 CONFIG_PACKAGE_lualibusb1=m
 CONFIG_PACKAGE_luamqtt=m
 CONFIG_PACKAGE_luaposix=m
+CONFIG_PACKAGE_luaposix33=m
 CONFIG_PACKAGE_luarocks=m
 CONFIG_PACKAGE_luasec=m
 CONFIG_PACKAGE_luasoap=m
@@ -3665,6 +3772,7 @@ CONFIG_PACKAGE_check=m
 CONFIG_PACKAGE_classpath=m
 CONFIG_PACKAGE_classpath-tools=m
 CONFIG_PACKAGE_confuse=m
+CONFIG_PACKAGE_czmq=m
 CONFIG_PACKAGE_dtndht=m
 CONFIG_PACKAGE_engine_pkcs11=m
 CONFIG_PACKAGE_fcgi=m
@@ -3680,6 +3788,7 @@ CONFIG_PACKAGE_libapr=m
 CONFIG_PACKAGE_libaprutil=m
 CONFIG_PACKAGE_libarchive=m
 CONFIG_PACKAGE_libartnet=m
+# CONFIG_PACKAGE_libasm is not set
 CONFIG_PACKAGE_libaudiofile=m
 CONFIG_PACKAGE_libavahi-client=m
 CONFIG_PACKAGE_libavahi-compat-libdnssd=m
@@ -3753,7 +3862,6 @@ CONFIG_PACKAGE_libdevmapper=m
 CONFIG_PACKAGE_libdmapsharing=m
 CONFIG_PACKAGE_libdnet=m
 CONFIG_PACKAGE_libelf1=y
-# CONFIG_PACKAGE_libasm is not set
 # CONFIG_PACKAGE_libdw is not set
 CONFIG_PACKAGE_libev=m
 CONFIG_PACKAGE_libevent=m
@@ -3770,6 +3878,7 @@ CONFIG_PACKAGE_libevent21-pthreads=m
 CONFIG_PACKAGE_libevhtp=m
 CONFIG_PACKAGE_libexif=m
 CONFIG_PACKAGE_libexpat=y
+CONFIG_PACKAGE_libexslt=m
 CONFIG_PACKAGE_libf2fs=m
 CONFIG_PACKAGE_libfaad2=m
 # CONFIG_FAAD2_ALWAYS_USE_FLOATING_POINT is not set
@@ -3825,7 +3934,6 @@ CONFIG_PACKAGE_hamlib-yaesu=m
 CONFIG_PACKAGE_hidapi=y
 CONFIG_PACKAGE_ibrcommon=m
 CONFIG_PACKAGE_ibrdtn=m
-CONFIG_PACKAGE_libexslt=m
 CONFIG_PACKAGE_libhttp-parser=m
 CONFIG_PACKAGE_libical=m
 CONFIG_PACKAGE_libiconv=y
@@ -3992,7 +4100,7 @@ CONFIG_PACKAGE_libtiff=m
 CONFIG_PACKAGE_libtiffxx=m
 CONFIG_PACKAGE_libtorrent=m
 CONFIG_PACKAGE_libubox=y
-# CONFIG_PACKAGE_libubox-lua is not set
+CONFIG_PACKAGE_libubox-lua=m
 CONFIG_PACKAGE_libubus=y
 CONFIG_PACKAGE_libubus-lua=y
 CONFIG_PACKAGE_libuci=y
@@ -4014,6 +4122,7 @@ CONFIG_PACKAGE_libusbmuxd=m
 CONFIG_PACKAGE_libustream-polarssl=y
 CONFIG_PACKAGE_libuuid=y
 CONFIG_PACKAGE_libuv=y
+CONFIG_PACKAGE_libuv-lua=m
 CONFIG_PACKAGE_libuvc=m
 CONFIG_PACKAGE_libv4l=m
 CONFIG_PACKAGE_libvorbis=m
@@ -4033,6 +4142,7 @@ CONFIG_PACKAGE_libzmq-curve=m
 CONFIG_PACKAGE_libzmq-nc=m
 # CONFIG_PACKAGE_linux-atm is not set
 CONFIG_PACKAGE_lttng-ust=m
+CONFIG_PACKAGE_luajit=m
 CONFIG_PACKAGE_mxml=m
 CONFIG_PACKAGE_nacl=m
 CONFIG_PACKAGE_opencv=m
@@ -7033,6 +7143,7 @@ CONFIG_PACKAGE_hostapd-mini=m
 CONFIG_PACKAGE_hostapd-utils=m
 CONFIG_PACKAGE_ibrdtn-tools=m
 CONFIG_PACKAGE_ibrdtnd=m
+CONFIG_PACKAGE_iconnect=m
 CONFIG_PACKAGE_iftop=m
 CONFIG_PACKAGE_iperf=m
 # CONFIG_PACKAGE_iperf-mt is not set
@@ -7226,6 +7337,11 @@ CONFIG_PACKAGE_shine=m
 CONFIG_PACKAGE_sox=m
 CONFIG_PACKAGE_svox=m
 CONFIG_PACKAGE_upmpdcli=m
+
+#
+# UBUS
+#
+CONFIG_PACKAGE_ubus-scriptd=m
 
 #
 # Utilities
@@ -7711,6 +7827,7 @@ CONFIG_PACKAGE_mount-utils=m
 CONFIG_PACKAGE_mountd=m
 CONFIG_PACKAGE_mpack=m
 # CONFIG_PACKAGE_namei is not set
+CONFIG_PACKAGE_network-address-from-cfe=m
 CONFIG_PACKAGE_nfc-utils=m
 # CONFIG_PACKAGE_ocf-crypto-headers is not set
 CONFIG_PACKAGE_open-plc-utils=m
